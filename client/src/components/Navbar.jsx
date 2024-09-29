@@ -26,7 +26,7 @@ const Navbar = () => {
           className="block md:hidden cursor-pointer"
         />
         <Link to="/">
-          <h3>DeFacto</h3>
+          <h3>DeSuits</h3>
         </Link>
       </div>
       <div className="hidden  md:flex gap-9">
