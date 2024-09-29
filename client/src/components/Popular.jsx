@@ -19,7 +19,7 @@ const Popular = () => {
     })
   }
   return (
-    <div className="w-full h-[60vh] flex items-center justify-center">
+    <div className="w-full h-[50vh] flex items-center justify-center">
       <div className="w-[65%] h-full relative">
         <div className="text-center text-4xl pt-20">
           <h2>Popular Categories</h2>
