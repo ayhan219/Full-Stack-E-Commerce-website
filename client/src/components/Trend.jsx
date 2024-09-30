@@ -6,7 +6,7 @@ const Trend = () => {
       <div className="text-5xl font-thin p-3 text-[#212529] text-center">
         <h2>Trends</h2>
       </div>
-      <div className="w-full flex gap-4 p-5">
+      <div className="w-full flex flex-col md:flex-row gap-4 p-5">
        
         <div className="w-full h-[30rem] relative cursor-pointer transform transition-transform duration-300 group-hover:scale-[0.95] hover:scale-105 hover:z-10 ease-in-out ">
           <img
