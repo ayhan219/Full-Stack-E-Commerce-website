@@ -118,8 +118,8 @@ const Navbar = () => {
       </div>
       {openNavbar && (
         <div className="absolute -bottom-24 w-full h-24 bg-white">
-          <div className="flex gap-5 flex-col p-4">
-            <div className="w-[50%] relative">
+          <div className="flex gap-5 flex-col p-4 z-50 bg-white">
+            <div className="w-[50%] relative h-auto bg-black ">
               <input
                 className="w-full h-10 border-2 outline-none p-2  border-black"
                 type="text"
