@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import Trend from '../components/Trend'
 import Popular from '../components/Popular'
 import JoinUs from '../components/JoinUs'
+import Descriptions from '../components/Descriptions'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
         <Trend />
         <Popular />
         <JoinUs />
+        <Descriptions />
     </div>
   )
 }
