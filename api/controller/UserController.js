@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const DB = require("../db");
 const jwt = require("jsonwebtoken");
 
+
 const signupUser = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -26,7 +27,7 @@ const signupUser = async (req, res) => {
         .json({ message: "username or email already exist" });
     }
 
-    // Hash the password using the provided password from the request
+   
     const hashPW = await bcrypt.hash(password, 10);
 
     const query = "insert into users (username,email,password) values(?,?,?)";
@@ -75,7 +76,12 @@ const loginUser = async (req, res) => {
         process.env.JWT_SECRET,
         { expiresIn: "1h" }
       );
-      return res.status(200).json({ message: "login successfull ", token });
+      res.cookie("token",token,{
+        httpOnly:true,
+        secure:true,
+        maxAge:3600000
+      })
+      return res.status(200).json({ message: "login successfull "});
     });
   } catch (error) {
     return res.status(400).json(error);
