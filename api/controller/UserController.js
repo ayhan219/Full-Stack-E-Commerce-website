@@ -4,16 +4,16 @@ const jwt = require("jsonwebtoken");
 
 
 const signupUser = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { name,surname,phone, email, password,birthday } = req.body;
 
-  if (!username || !email || !password) {
+  if (!name ||!surname ||!phone  || !email || !password || !birthday) {
     return res.status(400).json({ message: "provide all area" });
   }
 
   try {
-    const findUser = "select * from users where username =? or email=?";
+    const findUser = "select * from users where email=?";
     const userExists = await new Promise((resolve, reject) => {
-      DB.query(findUser, [username, email], (err, result) => {
+      DB.query(findUser, [email], (err, result) => {
         if (err) {
           return reject({ message: "database error" });
         }
@@ -30,11 +30,11 @@ const signupUser = async (req, res) => {
    
     const hashPW = await bcrypt.hash(password, 10);
 
-    const query = "insert into users (username,email,password) values(?,?,?)";
+    const query = "insert into users (name,surname,phone,email,password,birthday) values(?,?,?,?,?,?)";
     await new Promise((resolve, reject) => {
-      DB.query(query, [username, email, hashPW], (err, result) => {
+      DB.query(query, [name,surname,phone, email, hashPW,birthday], (err, result) => {
         if (err) {
-          return reject({ message: "database error" });
+          return reject({ message: "database error" ,err});
         }
         resolve(result);
       });
