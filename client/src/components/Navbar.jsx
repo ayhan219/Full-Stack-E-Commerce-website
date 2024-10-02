@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { CiUser } from "react-icons/ci";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FiShoppingBag } from "react-icons/fi";
@@ -19,17 +19,17 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full h-32 border-b-2 border-gray-400 shadow-md flex items-center justify-between md:p-5 relative">
-      <div className="text-2xl md:text-4xl font-medium flex items-center gap-3">
+    <div className="relative flex items-center justify-between w-full h-32 border-b-2 border-gray-400 shadow-md md:p-5">
+      <div className="flex items-center gap-3 text-2xl font-medium md:text-4xl">
         <GiHamburgerMenu
           onClick={() => setOpenNavbar(!openNavbar)}
-          className="block md:hidden cursor-pointer"
+          className="block cursor-pointer md:hidden"
         />
         <Link to="/">
           <h3>DeSuits</h3>
         </Link>
       </div>
-      <div className="hidden  md:flex gap-9">
+      <div className="hidden md:flex gap-9">
         <a
           href="#"
           className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
@@ -58,36 +58,36 @@ const Navbar = () => {
       </div>
       <div className="w-[20%] hidden relative md:block ">
         <input
-          className="w-full h-10 border-2 outline-none p-2  border-black"
+          className="w-full h-10 p-2 border-2 border-black outline-none"
           type="text"
           placeholder="Search"
         />
-        <CiSearch className="absolute right-0 top-2 text-2xl cursor-pointer text-black" />
+        <CiSearch className="absolute right-0 text-2xl text-black cursor-pointer top-2" />
       </div>
       <div className="flex gap-10">
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="flex items-center gap-3 text-lg relative"
+          className="relative flex items-center gap-3 text-lg"
         >
           <CiUser className="text-2xl md:text-3xl" />
-         <span className="hidden md:block cursor-pointer">login</span>
+         <span className="hidden cursor-pointer md:block">login</span>
 
           {openLoginArea && (
             <div
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="absolute top-5 mt-2 p-4 w-36 md:w-72 bg-white shadow-lg flex flex-col gap-4"
+              className="absolute flex flex-col gap-4 p-4 mt-2 bg-white shadow-lg top-5 w-36 md:w-72"
             >
               <div className="">
                 <Link to={"/login"}>
-                  <button className="bg-slate-800 w-full text-white text-base md:text-xl h-10">
+                  <button className="w-full h-10 text-base text-white bg-slate-800 md:text-xl">
                     Login
                   </button>
                 </Link>
               </div>
               <div className="text-xs md:text-sm">
-                <span>You don't have an account?</span>
+                <span>You dont have an account?</span>
                 <Link to={"/signup"}>
                   <strong> Sign up</strong>
                 </Link>
@@ -104,7 +104,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3 text-lg  cursor-pointer  relative  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full">
           <div className="relative cursor-pointer ">
             <FiShoppingBag className="text-2xl md:text-3xl" />
-            <span className="absolute w-5 h-5 rounded-full flex items-center justify-center bg-black text-white font-bold text-sm -top-2 -right-2">
+            <span className="absolute flex items-center justify-center w-5 h-5 text-sm font-bold text-white bg-black rounded-full -top-2 -right-2">
               1
             </span>
           </div>
@@ -115,15 +115,15 @@ const Navbar = () => {
         </div>
       </div>
       {openNavbar && (
-        <div className="absolute -bottom-24 w-full h-24 bg-white">
-          <div className="flex gap-5 flex-col p-4 z-50 bg-white">
+        <div className="absolute z-50 w-full h-24 bg-white -bottom-24">
+          <div className="z-50 flex flex-col gap-5 p-4 bg-white">
             <div className="w-[50%] relative h-auto bg-black ">
               <input
-                className="w-full h-10 border-2 outline-none p-2  border-black"
+                className="w-full h-10 p-2 border-2 border-black outline-none"
                 type="text"
                 placeholder="Search"
               />
-              <CiSearch className="absolute right-0 top-2 text-2xl cursor-pointer text-black" />
+              <CiSearch className="absolute right-0 text-2xl text-black cursor-pointer top-2" />
             </div>
             <a
               href="#"
@@ -150,7 +150,7 @@ const Navbar = () => {
             >
               BABY
             </a>
-           <div className="flex flex-col pt-10 gap-5">
+           <div className="flex flex-col gap-5 pt-10">
            <a
               href="#"
               className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
