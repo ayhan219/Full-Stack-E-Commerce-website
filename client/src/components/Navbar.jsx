@@ -96,7 +96,7 @@ const Navbar = () => {
             <div
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="absolute flex flex-col gap-4 p-4 mt-2 bg-white shadow-lg top-5 w-36 md:w-72"
+              className="absolute flex flex-col gap-4 p-4 mt-2 bg-white shadow-lg top-2 w-36 md:w-72"
             >
               {
                 user === null ? <div className="">
