@@ -1,14 +1,33 @@
-import  { useState } from "react";
+import  { useContext, useState } from "react";
 import { CiUser } from "react-icons/ci";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FiShoppingBag } from "react-icons/fi";
 import { CiSearch } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { UserContext } from "../UserContext/UserContext";
+import axios from "axios"
 
 const Navbar = () => {
   const [openLoginArea, setOpenLoginArea] = useState(false);
   const [openNavbar, setOpenNavbar] = useState(false);
+  const navigate = useNavigate();
+
+  const {user,setUser} = useContext(UserContext);
+
+  const handleLogout = async()=>{
+    try {
+      const response = await axios.post("http://localhost:5000/api/auth/logout",{},{
+        withCredentials:true
+      })
+      setUser(null);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+  
 
   const handleMouseEnter = () => {
     setOpenLoginArea(true);
@@ -79,19 +98,26 @@ const Navbar = () => {
               onMouseLeave={handleMouseLeave}
               className="absolute flex flex-col gap-4 p-4 mt-2 bg-white shadow-lg top-5 w-36 md:w-72"
             >
-              <div className="">
+              {
+                user === null ? <div className="">
                 <Link to={"/login"}>
                   <button className="w-full h-10 text-base text-white bg-slate-800 md:text-xl">
                     Login
                   </button>
                 </Link>
-              </div>
-              <div className="text-xs md:text-sm">
-                <span>You dont have an account?</span>
-                <Link to={"/signup"}>
-                  <strong> Sign up</strong>
-                </Link>
-              </div>
+              </div> : <div>Hello {user.name}</div>
+              }
+             {
+              user === null ?  <div className="text-xs md:text-sm">
+              <span>You dont have an account?</span>
+              <Link to={"/signup"}>
+                <strong> Sign up</strong>
+              </Link>
+            </div> : 
+            <div className="w-full h-16 text-white">
+              <button onClick={handleLogout} className="w-full h-auto bg-blue-800">Logout</button>
+            </div>
+             }
             </div>
           )}
         </div>

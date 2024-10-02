@@ -1,6 +1,6 @@
 import TextField from "@mui/material/TextField";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../UserContext/UserContext";
 
@@ -8,6 +8,7 @@ const Login = () => {
     const {setUser} = useContext(UserContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -21,8 +22,8 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      console.log(response.data.user);
       setUser(response.data.user)
+      navigate("/")
     } catch (error) {
       console.log(error);
     }
