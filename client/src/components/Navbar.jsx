@@ -71,9 +71,7 @@ const Navbar = () => {
           className="flex items-center gap-3 text-lg relative"
         >
           <CiUser className="text-2xl md:text-3xl" />
-          <a href="" className="hidden md:block">
-            Login
-          </a>
+         <span className="hidden md:block cursor-pointer">login</span>
 
           {openLoginArea && (
             <div
