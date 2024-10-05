@@ -154,7 +154,7 @@ const Signup = () => {
             </div>
           </div>
           <div className='flex justify-center w-full pt-5'>
-            <button onClick={signupUser} className='w-full h-12 text-xl text-white bg-blue-700'>Submit</button>
+            <button onClick={signupUser} className='w-full h-12 text-xl text-white bg-[#1E293B]'>Submit</button>
           </div>
           <div className='flex justify-center gap-3 pt-5 text-xl'>
             <p>You have an account?</p>
