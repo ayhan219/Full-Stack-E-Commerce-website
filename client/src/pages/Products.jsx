@@ -1,10 +1,12 @@
 import React from 'react'
 import Filter from '../components/Filter'
+import Product from '../components/Product'
 
 const Products = () => {
   return (
-    <div>
+    <div className='flex'>
         <Filter />
+        <Product />
     </div>
   )
 }
