@@ -47,14 +47,14 @@ const signupUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
+  const { email, password } = req.body;
+  if (!email || !password) {
     return res.status(400).json({ message: "provide all area" });
   }
-
+  
   try {
-    const query = "select * from users where username=?";
-    DB.query(query, [username], async (err, result) => {
+    const query = "select * from users where email=?";
+    DB.query(query, [email], async (err, result) => {
       if (err) {
         return res.status(500).json({ message: "database error" });
       }
@@ -71,7 +71,7 @@ const loginUser = async (req, res) => {
       const token = jwt.sign(
         {
           id: user.id,
-          username: user.username,
+          name: user.name,
         },
         process.env.JWT_SECRET,
         { expiresIn: "1h" }
@@ -81,14 +81,32 @@ const loginUser = async (req, res) => {
         secure:true,
         maxAge:3600000
       })
-      return res.status(200).json({ message: "login successfull "});
+      return res.status(200).json({ message: "login successfull ",user:{id:user.id,name:user.name,surname:user.surname,email:user.email}});
     });
   } catch (error) {
     return res.status(400).json(error);
   }
 };
 
+const getCurrentUser = async(req,res)=>{
+  const user = req.user
+ try {
+  if(!user){
+    return res.status(400).json({message:"user not found"})
+  }
+  return res.status(200).json(user)
+ } catch (error) {
+  return res.status(500).json({message:"server error",error})
+ }
+}
+
+const logoutUser = async(req,res)=>{
+  res.clearCookie("token");
+  return res.status(200).json({message:"logout successfull"})
+}
 module.exports = {
   signupUser,
   loginUser,
+  getCurrentUser,
+  logoutUser
 };

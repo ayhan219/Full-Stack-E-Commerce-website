@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import axios from "axios"
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -14,6 +15,7 @@ const Signup = () => {
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
+  const navigate = useNavigate();
 
  const signupUser = async()=>{
     const birthdayConcat = day + "/"+month+"/"+year
@@ -26,7 +28,9 @@ const Signup = () => {
             password,
             birthday:birthdayConcat
         })
-        console.log(response.data);
+        if(response.status===200){
+          navigate("/login");
+        }
         
     } catch (error) {
         console.log(error);
@@ -46,14 +50,14 @@ const Signup = () => {
     <div className='w-full h-[80vh] flex justify-center items-center'> 
       <div className='w-[90%] md:w-[50%] h-full'>
         
-        <div className='text-center text-3xl font-bold pt-10'>
+        <div className='pt-10 text-3xl font-bold text-center'>
           <h2>Signup</h2>
         </div>
 
        
         <div className='flex flex-col'>
       
-          <div className='w-full flex gap-5 justify-center pt-10'>
+          <div className='flex justify-center w-full gap-5 pt-10'>
             <TextField 
               onChange={(e) => setName(e.target.value)} 
               value={name} 
@@ -73,7 +77,7 @@ const Signup = () => {
           </div>
 
        
-          <div className='w-full flex justify-center pt-5'>
+          <div className='flex justify-center w-full pt-5'>
             <TextField  
               onChange={(e) => setEmail(e.target.value)} 
               value={email} 
@@ -85,7 +89,7 @@ const Signup = () => {
           </div>
 
       
-          <div className='w-full flex justify-center pt-5'>
+          <div className='flex justify-center w-full pt-5'>
             <TextField 
               onChange={(e) => setPhone(e.target.value)} 
               value={phone}  
@@ -98,7 +102,7 @@ const Signup = () => {
           </div>
 
         
-          <div className='w-full flex justify-center pt-5'>
+          <div className='flex justify-center w-full pt-5'>
             <TextField
               fullWidth
               id="password"
@@ -112,9 +116,9 @@ const Signup = () => {
           </div>
 
          
-          <div className='w-full flex justify-center flex-col items-center pt-8'>
-            <label className='text-lg font-semibold pb-2'>Your Birthday</label>
-            <div className='w-full flex justify-center gap-4'>
+          <div className='flex flex-col items-center justify-center w-full pt-8'>
+            <label className='pb-2 text-lg font-semibold'>Your Birthday</label>
+            <div className='flex justify-center w-full gap-4'>
               <select 
                 className='w-[30%] border border-gray-300 p-2 rounded-md' 
                 onChange={(e) => setDay(e.target.value)} 
@@ -149,12 +153,12 @@ const Signup = () => {
               </select>
             </div>
           </div>
-          <div className='pt-5 w-full  flex justify-center'>
-            <button onClick={signupUser} className='w-full h-12 bg-blue-700 text-white text-xl'>Submit</button>
+          <div className='flex justify-center w-full pt-5'>
+            <button onClick={signupUser} className='w-full h-12 text-xl text-white bg-blue-700'>Submit</button>
           </div>
-          <div className='text-xl flex justify-center gap-3 pt-5'>
+          <div className='flex justify-center gap-3 pt-5 text-xl'>
             <p>You have an account?</p>
-            <Link to={"/login"}><span className='text-red-700 font-bold hover:text-blue-500 ease-in-out duration-100'>Login</span></Link>
+            <Link to={"/login"}><span className='font-bold text-red-700 duration-100 ease-in-out hover:text-blue-500'>Login</span></Link>
           </div>
         </div>
       </div>

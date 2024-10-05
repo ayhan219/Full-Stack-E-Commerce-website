@@ -1,17 +1,17 @@
-import React from 'react';
+
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-black py-8 pt-32 md:pt-0">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+    <footer className="py-8 pt-40 text-black bg-white md:pt-24">
+      <div className="container px-4 mx-auto">
+        <div className="flex flex-col items-center justify-between md:flex-row">
           {/* Logo / Brand */}
           <div className="mb-4 md:mb-0">
             <h2 className="text-xl font-bold">DeSuits</h2>
           </div>
 
           {/* Social Media Links */}
-          <div className="flex space-x-4 mb-4 md:mb-0">
+          <div className="flex mb-4 space-x-4 md:mb-0">
             <a href="#" className="hover:text-gray-400">
               <i className="fab fa-facebook-f"></i>
             </a>
@@ -35,7 +35,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="text-center mt-8">
+        <div className="mt-8 text-center">
           <p className="text-sm text-gray-400">&copy; 2024 MyWebsite. All rights reserved.</p>
         </div>
       </div>
