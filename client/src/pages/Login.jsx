@@ -30,8 +30,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center w-full h-screen">
-      <div className="w-[70%] h-full text-center pt-10 flex flex-col gap-2">
+    <div className="flex justify-center  w-full h-[80vh]">
+      <div className="w-[70%] h-full text-center pt-20 flex flex-col gap-2 ">
         <div className="text-4xl">
           <h2>Login</h2>
         </div>
