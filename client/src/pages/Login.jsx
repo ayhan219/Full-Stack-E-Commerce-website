@@ -60,7 +60,7 @@ const Login = () => {
         <div className="flex justify-center w-full pt-5">
           <button
             onClick={handleLogin}
-            className="w-full h-12 text-xl text-white bg-blue-700"
+            className="w-full h-12 text-xl text-white bg-[#1E293B]"
           >
             Login
           </button>
