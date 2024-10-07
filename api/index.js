@@ -4,6 +4,7 @@ const cors = require("cors")
 const dotenv = require("dotenv");
 const UserAuth = require("./routes/UserRoute")
 const cookieParser = require("cookie-parser");
+const ProductRoute = require("./routes/ProductRoute")
 
 
 dotenv.config();
@@ -18,6 +19,7 @@ app.use(cookieParser());
 
 
 app.use("/api/auth",UserAuth)
+app.use("/api/products",ProductRoute)
 
 app.listen(5000,()=>{
     console.log("server listening on port 5000");
