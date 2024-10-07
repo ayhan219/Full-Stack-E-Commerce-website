@@ -3,7 +3,7 @@ import { IoIosStar } from "react-icons/io";
 
 const Item = () => {
   return (
-    <div className="w-96 h-[32rem] bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="w-96 h-[32rem] bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 duration-150">
       {/* Resim Bölümü */}
       <div className="w-full h-[65%] cursor-pointer">
         <img
