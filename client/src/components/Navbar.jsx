@@ -3,7 +3,7 @@ import { CiUser } from "react-icons/ci";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FiShoppingBag } from "react-icons/fi";
 import { CiSearch } from "react-icons/ci";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { UserContext } from "../UserContext/UserContext";
 import axios from "axios"
@@ -11,7 +11,7 @@ import axios from "axios"
 const Navbar = () => {
   const [openLoginArea, setOpenLoginArea] = useState(false);
   const [openNavbar, setOpenNavbar] = useState(false);
-  const navigate = useNavigate();
+  
 
   const {user,setUser} = useContext(UserContext);
 

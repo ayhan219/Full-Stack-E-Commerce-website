@@ -1,29 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Item from './Item'
 import axios from 'axios'
+import { UserContext } from '../UserContext/UserContext'
 
 const Product = () => {
 
-  const [products,setProducts] = useState([]);
-  
-  const getProducts = async()=>{
-    try {
-      const response = await axios.get("http://localhost:5000/api/products");
-      setProducts(response.data)
-      console.log(response.data);
-      
-    } catch (error) {
-      console.log(error);
-      
-    }
+  const {products,setProducts} = useContext(UserContext);
 
-  }
-
-  useEffect(()=>{
-    getProducts();
-  },[])
   return (
-    <div className='w-full p-10 flex gap-8 flex-wrap   '>
+    <div className='flex flex-wrap w-full gap-8 p-10 '>
         {
           products.map((item,index)=>(
             <Item item={item} key={index}/>

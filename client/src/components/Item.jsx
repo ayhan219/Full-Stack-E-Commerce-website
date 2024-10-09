@@ -7,7 +7,7 @@ const Item = ({item,key}) => {
       {/* Resim Bölümü */}
       <div className="w-full h-[65%] cursor-pointer">
         <img
-          className="w-full h-full object-cover"
+          className="object-cover w-full h-full"
           src={`http://localhost:5000/${item.image}`}
           alt="T-Shirt"
         />
@@ -26,7 +26,7 @@ const Item = ({item,key}) => {
         <IoIosStar className="text-yellow-400" />
         <IoIosStar className="text-yellow-400" />
         <IoIosStar className="text-yellow-400" />
-        <span className="text-base pl-3 text-gray-600">(8)</span>
+        <span className="pl-3 text-base text-gray-600">(8)</span>
       </div>
 
       {/* Fiyat Bilgisi */}

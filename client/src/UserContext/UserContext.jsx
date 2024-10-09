@@ -6,6 +6,7 @@ export const UserContext = createContext();
 export const UserProvider =({children})=>{
     const [user,setUser] = useState(null);
     const [categories,setCategories] = useState("");
+    const [products,setProducts] = useState([]);
 
 
     const getCurrentUser = async()=>{
@@ -22,13 +23,29 @@ export const UserProvider =({children})=>{
         }
     }
 
+    const getProducts = async()=>{
+        try {
+          const response = await axios.get("http://localhost:5000/api/products");
+          setProducts(response.data)
+          console.log(response.data);
+          
+        } catch (error) {
+          console.log(error);
+          
+        }
+    
+      }
+
     useEffect(()=>{
         getCurrentUser();
-        
+        getProducts();
+    
     },[])
 
+    
+
     return(
-        <UserContext.Provider value={{user,setUser,categories,setCategories}}>
+        <UserContext.Provider value={{user,setUser,categories,setCategories,setProducts,products}}>
             {children}
         </UserContext.Provider>
     )
