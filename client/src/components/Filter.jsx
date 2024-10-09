@@ -10,19 +10,19 @@ const Filter = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleCheckboxChange = (category) => {
-    const newCategory = selectedCategory === category ? "" : category;
-    setSelectedCategory(newCategory);
+
+    const isSelected = selectedCategory === category;
+
+    
+    const newSelectedCategory = isSelected ? "" : category;
 
  
-    const updatedCategories = {
-      WOMEN: newCategory === "WOMEN",
-      MEN: newCategory === "MEN",
-      CHILD: newCategory === "CHILD",
-      BABY: newCategory === "BABY",
-    };
-    
-    setCategories(updatedCategories);
-  };
+    setSelectedCategory(newSelectedCategory);
+    setCategories(newSelectedCategory ? newSelectedCategory : ""); 
+
+    console.log(newSelectedCategory);
+};
+
 
   return (
     <div className="w-[20%]  h-screen md:p-5 bg-white shadow-lg rounded-lg overflow-y-auto">

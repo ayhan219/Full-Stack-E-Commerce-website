@@ -1,28 +1,28 @@
 const DB = require("../db");
 
 const getProducts = async (req, res) => {
-    const { categories } = req.query;
-    console.log(categories)
+    const {categories} = req.query
+    
     
     let query = "SELECT * FROM products WHERE 1=1";
     let queryParams = [];
 
-    if (categories==="men") {
+    if (categories==="MEN") {
         query += " AND forWho = ?";
         queryParams.push("men");
     }
 
-    if (categories==="women") {
+    if (categories==="WOMEN") {
         query += " AND forWho = ?";
         queryParams.push("women");
     }
 
-    if (categories==="child") {
+    if (categories==="CHILD") {
         query += " AND forWho = ?";
         queryParams.push("child");
     }
 
-    if (categories==="baby") {
+    if (categories==="BABY") {
         query += " AND forWho = ?";
         queryParams.push("baby");
     }

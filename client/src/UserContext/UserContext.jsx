@@ -28,8 +28,8 @@ export const UserProvider = ({ children }) => {
                 : "http://localhost:5000/api/products";
 
             const response = await axios.get(url);
+            
             setProducts(response.data);
-            console.log(response.data);
         } catch (error) {
             console.log(error);
         }
@@ -37,6 +37,10 @@ export const UserProvider = ({ children }) => {
 
     useEffect(() => {
         getCurrentUser();
+       
+    }, []); 
+
+    useEffect(() => {
         getProducts(categories);
     }, [categories]); 
 
