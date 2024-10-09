@@ -20,7 +20,7 @@ const Filter = () => {
     setSelectedCategory(newSelectedCategory);
     setCategories(newSelectedCategory ? newSelectedCategory : ""); 
 
-    console.log(newSelectedCategory);
+    setOpenFilter(false);
 };
 
 
