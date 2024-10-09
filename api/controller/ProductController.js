@@ -2,6 +2,8 @@ const DB = require("../db");
 
 const getProducts = async (req, res) => {
     const {categories} = req.query
+    console.log(categories);
+    
     
     
     let query = "SELECT * FROM products WHERE 1=1";

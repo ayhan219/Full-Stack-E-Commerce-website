@@ -3,7 +3,7 @@ import { CiUser } from "react-icons/ci";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FiShoppingBag } from "react-icons/fi";
 import { CiSearch } from "react-icons/ci";
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { UserContext } from "../UserContext/UserContext";
 import axios from "axios"
@@ -11,6 +11,12 @@ import axios from "axios"
 const Navbar = () => {
   const [openLoginArea, setOpenLoginArea] = useState(false);
   const [openNavbar, setOpenNavbar] = useState(false);
+  const {setCategories} = useContext(UserContext);
+
+  const navigate = useNavigate();
+
+
+  
   
 
   const {user,setUser} = useContext(UserContext);
@@ -37,6 +43,14 @@ const Navbar = () => {
     setOpenLoginArea(false);
   };
 
+  const handleCategories = (category)=>{
+    setCategories(category)
+    navigate("/products")
+  }
+  
+
+  
+
   return (
     <div className="relative flex items-center justify-between w-full h-32 border-b-2 border-gray-400 shadow-md md:p-5">
       <div className="flex items-center gap-3 text-2xl font-medium md:text-4xl">
@@ -56,26 +70,27 @@ const Navbar = () => {
           PRODUCTS
         </a>
         <a
-          href="#"
+        onClick={()=>handleCategories("WOMEN")}
           className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
         >
           WOMEN
         </a>
+        
 
         <a
-          href="#"
+           onClick={()=>handleCategories("MEN")}
           className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
         >
           MEN
         </a>
         <a
-          href="#"
+           onClick={()=>handleCategories("CHILD")}
           className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
         >
           CHILD
         </a>
         <a
-          href="#"
+           onClick={()=>handleCategories("BABY")}
           className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
         >
           BABY
