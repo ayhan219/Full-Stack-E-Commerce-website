@@ -49,6 +49,12 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="hidden md:flex gap-9">
+      <a
+          href="/products"
+          className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+        >
+          PRODUCTS
+        </a>
         <a
           href="#"
           className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
