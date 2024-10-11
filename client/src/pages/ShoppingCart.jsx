@@ -9,7 +9,7 @@ const ShoppingCart = () => {
 
     
   return (
-    <div className='flex justify-center w-full h-screen bg-white'>
+    <div className='flex justify-center w-full h-[120vh] bg-white'>
       <div className='w-[90%] lg:w-[70%] h-full flex flex-col lg:flex-row gap-5 p-8 bg-white rounded-lg'>
         {/* Left Side - Shopping Cart Details */}
         <div className='w-full lg:w-2/3'>
@@ -54,15 +54,15 @@ const ShoppingCart = () => {
         {/* Right Side - Order Summary */}
         <div className='w-full p-6 bg-white rounded-lg lg:w-1/3'>
           <h3 className='mb-4 text-xl font-bold text-gray-800'>Order Summary</h3>
-          <div className='flex justify-between text-gray-600'>
+          <div className='flex justify-between gap-6 pt-12 text-gray-600'>
             <p>Subtotal</p>
             <p>$59.98</p>
           </div>
-          <div className='flex justify-between mt-2 text-gray-600'>
+          <div className='flex justify-between gap-6 mt-6 text-gray-600'>
             <p>Shipping</p>
             <p>Free</p>
           </div>
-          <hr className='my-4' />
+          <hr className='my-4 mt-8' />
           <div className='flex justify-between text-lg font-bold text-gray-900'>
             <p>Total</p>
             <p>$59.98</p>
