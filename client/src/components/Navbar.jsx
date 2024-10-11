@@ -46,6 +46,7 @@ const Navbar = () => {
   const handleCategories = (category)=>{
     setCategories(category)
     navigate("/products")
+    setOpenNavbar(false);
   }
   
 
@@ -173,26 +174,26 @@ const Navbar = () => {
               <CiSearch className="absolute right-0 text-2xl text-black cursor-pointer top-2" />
             </div>
             <a
-              href="#"
+              onClick={()=>handleCategories("WOMEN")}
               className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
             >
               WOMEN
             </a>
 
             <a
-              href="#"
+              onClick={()=>handleCategories("MEN")}
               className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
             >
               MEN
             </a>
             <a
-              href="#"
+               onClick={()=>handleCategories("CHILD")}
               className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
             >
               CHILD
             </a>
             <a
-              href="#"
+              onClick={()=>handleCategories("BABY")}
               className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
             >
               BABY
