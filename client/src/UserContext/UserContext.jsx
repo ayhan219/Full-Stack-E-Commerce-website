@@ -8,6 +8,7 @@ export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [categories, setCategories] = useState("");
     const [products, setProducts] = useState([]);
+    const [loading,setLoading] = useState(false);
 
     const getCurrentUser = async () => {
         try {
@@ -22,6 +23,7 @@ export const UserProvider = ({ children }) => {
     };
 
     const getProducts = async (category) => {
+        setLoading(true);
         try {
             
             const url = category 
@@ -33,6 +35,8 @@ export const UserProvider = ({ children }) => {
             setProducts(response.data);
         } catch (error) {
             console.log(error);
+        }finally{
+            setLoading(false)
         }
     };
 
@@ -46,7 +50,7 @@ export const UserProvider = ({ children }) => {
     }, [categories]); 
 
     return (
-        <UserContext.Provider value={{ user, setUser, categories, setCategories, setProducts, products }}>
+        <UserContext.Provider value={{ user, setUser, categories, setCategories, setProducts, products,loading }}>
             {children}
         </UserContext.Provider>
     );
