@@ -6,6 +6,7 @@ import Signup from "./pages/Signup"
 import Products from "./pages/Products"
 import Login from "./pages/Login"
 import { UserProvider } from "./UserContext/UserContext"
+import ShoppingCart from "./pages/ShoppingCart"
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/shoppingcart" element={<ShoppingCart />} />
       </Routes>
       <Footer />
       </UserProvider>
