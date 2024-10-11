@@ -1,4 +1,5 @@
 import React from 'react'
+import { IoIosClose } from "react-icons/io";
 
 const ShoppingCartItem = () => {
   return (
@@ -8,6 +9,7 @@ const ShoppingCartItem = () => {
               <p className='text-sm font-medium text-gray-700'>Shirt</p>
               <p className='text-sm font-medium text-gray-700'>Male</p>
               <p className='text-sm font-bold text-gray-900'>$29.99</p>
+              <IoIosClose className='text-xl font-bold duration-100 ease-in-out cursor-pointer hover:text-blue-500' />
             </div>
   )
 }
