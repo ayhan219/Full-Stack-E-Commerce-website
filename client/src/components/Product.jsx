@@ -10,9 +10,12 @@ const Product = () => {
   return (
     <div className='flex flex-wrap w-full gap-8 p-10 '>
         {
-          products.map((item,index)=>(
-            <Item item={item} key={index}/>
-          ))
+         products.length > 0 ?  products.map((item,index)=>(
+          <Item item={item} key={index}/>
+        )) : <div>
+          <h2 className='flex justify-center w-full text-3xl font-bold text-black'>No Products!</h2>
+          
+        </div>
         }
         
         

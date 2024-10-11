@@ -2,7 +2,6 @@ const DB = require("../db");
 
 const getProducts = async (req, res) => {
     const {categories} = req.query
-    console.log(categories);
     
     
     
