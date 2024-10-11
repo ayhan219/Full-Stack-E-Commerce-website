@@ -150,12 +150,14 @@ const Navbar = () => {
           </a>
         </div>
         <div className="flex items-center gap-3 text-lg  cursor-pointer  relative  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full">
+          <Link to={"/shoppingcart"}>
           <div className="relative cursor-pointer ">
             <FiShoppingBag className="text-2xl md:text-3xl" />
             <span className="absolute flex items-center justify-center w-5 h-5 text-sm font-bold text-white bg-black rounded-full -top-2 -right-2">
               1
             </span>
           </div>
+          </Link>
           <a href="" className="hidden md:block">
             Shopping Cart
           </a>
