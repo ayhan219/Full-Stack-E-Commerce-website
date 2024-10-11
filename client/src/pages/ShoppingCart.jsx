@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import ShoppingCartItem from '../components/ShoppingCartItem';
+import { UserContext } from '../UserContext/UserContext';
 
 const ShoppingCart = () => {
+
+    const {loading} = useContext(UserContext);
+
+    
   return (
     <div className='flex justify-center w-full h-screen bg-white'>
       <div className='w-[90%] lg:w-[70%] h-full flex flex-col lg:flex-row gap-5 p-8 bg-white rounded-lg'>
@@ -32,7 +37,7 @@ const ShoppingCart = () => {
 
           {/* Cart Items List */}
           <div className='p-5 space-y-8'>
-            {/* Item 1 */}
+           
             <ShoppingCartItem />
             <ShoppingCartItem />
             <ShoppingCartItem />
@@ -41,8 +46,8 @@ const ShoppingCart = () => {
           
           </div>
           <div className='flex justify-center w-full gap-5'>
-            <button className='w-12 h-8 font-bold text-white bg-blue-700'>Prev</button>
-            <button className='w-12 h-8 font-bold text-white bg-blue-700'>Next</button>
+            <button className='w-12 h-8 font-semibold text-white bg-blue-700'>Prev</button>
+            <button className='w-12 h-8 font-semibold text-white bg-blue-700'>Next</button>
           </div>
         </div>
 
