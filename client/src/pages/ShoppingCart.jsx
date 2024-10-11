@@ -46,8 +46,8 @@ const ShoppingCart = () => {
           
           </div>
           <div className='flex justify-center w-full gap-5'>
-            <button className='w-12 h-8 font-semibold text-white bg-blue-700'>Prev</button>
-            <button className='w-12 h-8 font-semibold text-white bg-blue-700'>Next</button>
+            <button className='w-12 h-8 font-semibold text-white duration-150 ease-in-out bg-blue-700 rounded-sm hover:bg-black '>Prev</button>
+            <button className='w-12 h-8 font-semibold text-white duration-150 ease-in-out bg-blue-700 rounded-sm hover:bg-black'>Next</button>
           </div>
         </div>
 
