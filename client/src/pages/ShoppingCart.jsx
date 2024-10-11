@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import ShoppingCartItem from '../components/ShoppingCartItem';
 
 const ShoppingCart = () => {
   return (
-    <div className='flex justify-center w-full h-screen bg-gray-100'>
-      <div className='w-[90%] lg:w-[70%] h-full flex flex-col lg:flex-row gap-5 p-8 bg-white shadow-lg rounded-lg'>
+    <div className='flex justify-center w-full h-screen bg-white'>
+      <div className='w-[90%] lg:w-[70%] h-full flex flex-col lg:flex-row gap-5 p-8 bg-white rounded-lg'>
         {/* Left Side - Shopping Cart Details */}
         <div className='w-full lg:w-2/3'>
           <div className='p-5 text-3xl font-bold border-b border-gray-300'>
@@ -32,19 +33,21 @@ const ShoppingCart = () => {
           {/* Cart Items List */}
           <div className='p-5 space-y-8'>
             {/* Item 1 */}
-            <div className='flex items-center justify-between pb-5 border-b'>
-              <img className='object-cover w-16 h-16 rounded' src="https://img-lcwaikiki.mncdn.com/mnpadding/1020/1360/ffffff/pim/productimages/20241/7190391/v1/l_20241-s4iv47z8-cvl-100-81-90-189_a1.jpg" alt="Shirt" />
-              <p className='text-sm font-medium text-gray-700'>M</p>
-              <p className='text-sm font-medium text-gray-700'>Shirt</p>
-              <p className='text-sm font-medium text-gray-700'>Male</p>
-              <p className='text-sm font-bold text-gray-900'>$29.99</p>
-            </div>
+            <ShoppingCartItem />
+            <ShoppingCartItem />
+            <ShoppingCartItem />
+            
+            
           
+          </div>
+          <div className='flex justify-center w-full gap-5'>
+            <button className='w-12 h-8 font-bold text-white bg-blue-700'>Prev</button>
+            <button className='w-12 h-8 font-bold text-white bg-blue-700'>Next</button>
           </div>
         </div>
 
         {/* Right Side - Order Summary */}
-        <div className='w-full p-6 rounded-lg lg:w-1/3 bg-gray-50'>
+        <div className='w-full p-6 bg-white rounded-lg lg:w-1/3'>
           <h3 className='mb-4 text-xl font-bold text-gray-800'>Order Summary</h3>
           <div className='flex justify-between text-gray-600'>
             <p>Subtotal</p>
