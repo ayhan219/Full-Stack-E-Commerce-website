@@ -158,9 +158,11 @@ const Navbar = () => {
             </span>
           </div>
           </Link>
+          <Link onClick={()=>setOpenNavbar(false)} to={"/shoppingcart"}>
           <a href="" className="hidden md:block">
             Shopping Cart
           </a>
+          </Link>
           <div></div>
         </div>
       </div>
