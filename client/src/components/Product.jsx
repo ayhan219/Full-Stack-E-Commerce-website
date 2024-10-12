@@ -4,6 +4,7 @@ import { UserContext } from '../UserContext/UserContext';
 
 const Product = () => {
   const { products, loading } = useContext(UserContext);
+  
 
   return (
     <div className='flex flex-wrap w-full gap-8 p-10'>

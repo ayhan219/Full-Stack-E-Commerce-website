@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Filter from '../components/Filter'
 import Product from '../components/Product'
 
 const Products = () => {
+
+  
+
   return (
     <div className='flex'>
         <Filter />

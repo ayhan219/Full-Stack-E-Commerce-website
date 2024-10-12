@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { UserContext } from "../UserContext/UserContext";
 
 const Item = ({item,key}) => {
   const images = item.image.split(",");
+  const {productId,setProductId} = useContext(UserContext);
+
+  
   return (
     <div key={key} className="w-96 h-[32rem] bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 duration-150">
       
       <div className="w-full h-[65%] cursor-pointer">
        <Link to={`/products/${item.id}`}>
        <img 
+       onClick={()=>setProductId(item.id)}
           className="object-cover w-full h-full"
           src={`http://localhost:5000/${images[0]}`}
           alt="T-Shirt"
