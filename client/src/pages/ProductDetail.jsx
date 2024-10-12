@@ -1,9 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import { TbSTurnRight } from "react-icons/tb";
+import axios from "axios"
+import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
+  const {id} = useParams();
   const [selectedSize, setSelectedSize] = useState(""); 
+  const [images, setImages] = useState([]);
+  const [singleProduct,setSingleProduct] = useState(null);
+
+  const getSingleProduct = async()=>{
+    try {
+      const response = await axios.get(`http://localhost:5000/api/products/${id}`)
+      setSingleProduct(response.data)
+      setImages(response.data[0].image.split(","))
+     
+      
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+    
+  }
+  useEffect(()=>{
+    getSingleProduct();
+  },[])
 
   const handleClick = (size) => {
     setSelectedSize(size); 
@@ -25,19 +48,25 @@ const ProductDetail = () => {
         <div className="w-full  h-full p-5">
          <div className="w-full h-[45%] flex">
          <div className="w-full h-full ">
-          <img className="w-full h-full object-cover" src="https://img-lcwaikiki.mncdn.com/mnpadding/1020/1360/ffffff/pim/productimages/20232/6900619/v1/l_20232-w3ht91z8-vz8-97-78-94-188_a.jpg" alt="" />
+          {images[0] && (<img className="w-full h-full object-cover" src={`http://localhost:5000/${images[0]}`} alt="" />)}
          </div>
          <div className="w-full h-full ">
-          <img className="w-full h-full object-cover" src="https://img-lcwaikiki.mncdn.com/mnpadding/1020/1360/ffffff/pim/productimages/20232/6900619/v1/l_20232-w3ht91z8-vz8-97-78-94-188_a2.jpg" alt="" />
+          {
+            images[1] && (<img className="w-full h-full object-cover" src={`http://localhost:5000/${images[1]}`} alt="" />)
+          }
          </div>
          
          </div>
          <div className="w-full h-[45%] flex">
          <div className="w-full h-full ">
-         <img className="w-full h-full object-cover" src="https://img-lcwaikiki.mncdn.com/mnpadding/1020/1360/ffffff/pim/productimages/20232/6900619/v1/l_20232-w3ht91z8-vz8-97-78-94-188_a3.jpg" alt="" />
+         {
+          images[2] && (<img className="w-full h-full object-cover" src={`http://localhost:5000/${images[2]}`} alt="" />)
+         }
          </div>
          <div className="w-full h-full ">
-         <img className="w-full h-full object-cover" src="https://img-lcwaikiki.mncdn.com/mnpadding/1020/1360/ffffff/pim/productimages/20232/6900619/v1/l_20232-w3ht91z8-vz8-97-78-94-188_a4.jpg" alt="" />
+         {
+          images[3] && (<img className="w-full h-full object-cover" src={`http://localhost:5000/${images[3]}`} alt="" />)
+         }
          </div>
         
          </div>
