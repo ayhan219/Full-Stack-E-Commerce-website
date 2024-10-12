@@ -8,6 +8,17 @@ const ProductDetail = () => {
   const handleClick = (size) => {
     setSelectedSize(size); 
   };
+
+  const handleBuy = ()=>{
+    if(selectedSize===""){
+      console.log("select size!");
+      
+    }
+    else{
+      console.log("size selected",selectedSize);
+      
+    }
+  }
   return (
     <div className="w-full h-[160vh] flex justify-center">
       <div className="w-full h-full  flex shadow-xl">
@@ -71,7 +82,10 @@ const ProductDetail = () => {
               </div>
       </div>
       <div className="w-full h-auto pt-20">
-        <button className="w-full h-14 bg-blue-600 text-white text-xl rounded-sm font-semibold hover:bg-blue-500 ease-in-out duration-100 ">Add To Shopping Cart</button>
+        {
+          selectedSize !== "" ? <button onClick={handleBuy}  className="w-full h-14 bg-blue-600 text-white text-xl rounded-sm font-semibold hover:bg-blue-500 ease-in-out duration-100 ">Add To Shopping Cart</button>
+          : <button  className="w-full h-14 bg-blue-600 text-white text-xl rounded-sm font-semibold  cursor-not-allowed ">Add To Shopping Cart</button>
+        }
       </div>
       <div className="pt-16 text-xl">
         <h2>This item is shipped by De Suits dealers.</h2>
