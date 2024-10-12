@@ -1,16 +1,19 @@
 import React from "react";
 import { IoIosStar } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Item = ({item,key}) => {
   return (
     <div key={key} className="w-96 h-[32rem] bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 duration-150">
       
       <div className="w-full h-[65%] cursor-pointer">
-        <img
+       <Link to={`/products/${item.id}`}>
+       <img 
           className="object-cover w-full h-full"
           src={`http://localhost:5000/${item.image}`}
           alt="T-Shirt"
         />
+       </Link>
       </div>
       
       

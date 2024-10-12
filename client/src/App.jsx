@@ -7,6 +7,7 @@ import Products from "./pages/Products"
 import Login from "./pages/Login"
 import { UserProvider } from "./UserContext/UserContext"
 import ShoppingCart from "./pages/ShoppingCart"
+import ProductDetail from "./pages/ProductDetail"
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products />} />
         <Route path="/shoppingcart" element={<ShoppingCart />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
       </Routes>
       <Footer />
       </UserProvider>
