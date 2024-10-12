@@ -37,6 +37,24 @@ const getProducts = async (req, res) => {
     });
 };
 
+const getSingleProduct = async(req,res)=>{
+    
+const id = req.params.id;
+
+
+
+
+const query = "select * from products where id = ?"
+
+DB.query(query,[id],(err,result)=>{
+    if (err) {
+        return res.status(500).json({ message: "database error" });
+    }
+    return res.status(200).json(result);
+})
+}
+
 module.exports = {
-    getProducts
+    getProducts,
+    getSingleProduct
 };
