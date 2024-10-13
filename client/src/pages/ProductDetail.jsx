@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import { TbSTurnRight } from "react-icons/tb";
 import axios from "axios"
 import { useParams } from "react-router-dom";
+import { UserContext } from "../UserContext/UserContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductDetail = () => {
   const {id} = useParams();
   const [selectedSize, setSelectedSize] = useState(""); 
   const [images, setImages] = useState([]);
   const [singleProduct,setSingleProduct] = useState(null);
+  const {user} = useContext(UserContext);
 
   const getSingleProduct = async()=>{
     try {
@@ -32,14 +36,32 @@ const ProductDetail = () => {
     setSelectedSize(size); 
   };
 
-  const handleBuy = ()=>{
+  const handleBuy = async ()=>{
     if(selectedSize===""){
       console.log("select size!");
       
     }
     else{
-      console.log("size selected",selectedSize);
+
       
+     try {
+      const response = await axios.post("http://localhost:5000/api/auth/addproduct",{
+        user_id:user.id,
+        product_id:id
+      })
+      if(response.status===200){
+        toast.success("product added!")
+      }
+      else{
+        toast.error("error while adding product!")
+      }
+      
+      
+     } catch (error) {
+      console.log(error);
+      
+     }
+
     }
   }
   return (

@@ -8,6 +8,8 @@ import Login from "./pages/Login"
 import { UserProvider } from "./UserContext/UserContext"
 import ShoppingCart from "./pages/ShoppingCart"
 import ProductDetail from "./pages/ProductDetail"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
     <>
     <Router>
       <UserProvider>
+        <ToastContainer />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
