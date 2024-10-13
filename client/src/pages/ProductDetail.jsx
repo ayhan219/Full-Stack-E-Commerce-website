@@ -44,6 +44,7 @@ const ProductDetail = () => {
           {
             user_id: user.id,
             product_id: id,
+            size:selectedSize
           }
         );
         if (response.status === 200) {

@@ -2,11 +2,10 @@ const bcrypt = require("bcrypt");
 const DB = require("../db");
 const jwt = require("jsonwebtoken");
 
-
 const signupUser = async (req, res) => {
-  const { name,surname,phone, email, password,birthday } = req.body;
+  const { name, surname, phone, email, password, birthday } = req.body;
 
-  if (!name ||!surname ||!phone  || !email || !password || !birthday) {
+  if (!name || !surname || !phone || !email || !password || !birthday) {
     return res.status(400).json({ message: "provide all area" });
   }
 
@@ -27,17 +26,21 @@ const signupUser = async (req, res) => {
         .json({ message: "username or email already exist" });
     }
 
-   
     const hashPW = await bcrypt.hash(password, 10);
 
-    const query = "insert into users (name,surname,phone,email,password,birthday) values(?,?,?,?,?,?)";
+    const query =
+      "insert into users (name,surname,phone,email,password,birthday) values(?,?,?,?,?,?)";
     await new Promise((resolve, reject) => {
-      DB.query(query, [name,surname,phone, email, hashPW,birthday], (err, result) => {
-        if (err) {
-          return reject({ message: "database error" ,err});
+      DB.query(
+        query,
+        [name, surname, phone, email, hashPW, birthday],
+        (err, result) => {
+          if (err) {
+            return reject({ message: "database error", err });
+          }
+          resolve(result);
         }
-        resolve(result);
-      });
+      );
     });
 
     return res.status(200).json({ message: "successful" });
@@ -51,7 +54,7 @@ const loginUser = async (req, res) => {
   if (!email || !password) {
     return res.status(400).json({ message: "provide all area" });
   }
-  
+
   try {
     const query = "select * from users where email=?";
     DB.query(query, [email], async (err, result) => {
@@ -76,51 +79,76 @@ const loginUser = async (req, res) => {
         process.env.JWT_SECRET,
         { expiresIn: "1h" }
       );
-      res.cookie("token",token,{
-        httpOnly:true,
-        secure:true,
-        maxAge:3600000
-      })
-      return res.status(200).json({ message: "login successfull ",user:{id:user.id,name:user.name,surname:user.surname,email:user.email}});
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        maxAge: 3600000,
+      });
+      return res
+        .status(200)
+        .json({
+          message: "login successfull ",
+          user: {
+            id: user.id,
+            name: user.name,
+            surname: user.surname,
+            email: user.email,
+          },
+        });
     });
   } catch (error) {
     return res.status(400).json(error);
   }
 };
 
-const getCurrentUser = async(req,res)=>{
-  const user = req.user
- try {
-  if(!user){
-    return res.status(400).json({message:"user not found"})
+const getCurrentUser = async (req, res) => {
+  const user = req.user;
+  try {
+    if (!user) {
+      return res.status(400).json({ message: "user not found" });
+    }
+    return res.status(200).json(user);
+  } catch (error) {
+    return res.status(500).json({ message: "server error", error });
   }
-  return res.status(200).json(user)
- } catch (error) {
-  return res.status(500).json({message:"server error",error})
- }
-}
+};
 
-const logoutUser = async(req,res)=>{
+const logoutUser = async (req, res) => {
   res.clearCookie("token");
-  return res.status(200).json({message:"logout successfull"})
-}
+  return res.status(200).json({ message: "logout successfull" });
+};
 
-const addProduct = async(req,res)=>{
-  const {user_id,product_id} = req.query;
+const addProduct = async (req, res) => {
+  const { user_id, product_id,size } = req.body;
 
-  const query = "insert into shopping_cart_items (user_id,product_id) values(?,?)"
+  const query =
+    "insert into shopping_cart_items (user_id,product_id,size) values(?,?,?)";
 
-  DB.query(query,[user_id,product_id],(err,result)=>{
+  DB.query(query, [user_id, product_id,size], (err, result) => {
     if (err) {
       return res.status(500).json({ message: "database error" });
     }
-    return res.status(200).json({message:"product added"})
-  })
-}
+    return res.status(200).json({ message: "product added" });
+  });
+};
+
+const getShoppingCart = async (req, res) => {
+  const { user_id } = req.query;
+
+  const query = `select p.*, sci.size from shopping_cart_items sci join products p on sci.product_id = p.id where sci.user_id = ?`;
+
+  DB.query(query, [user_id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "database error" });
+    }
+    return res.status(200).json(result);
+  });
+};
 module.exports = {
   signupUser,
   loginUser,
   getCurrentUser,
   logoutUser,
-  addProduct
+  addProduct,
+  getShoppingCart,
 };
