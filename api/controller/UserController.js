@@ -104,9 +104,23 @@ const logoutUser = async(req,res)=>{
   res.clearCookie("token");
   return res.status(200).json({message:"logout successfull"})
 }
+
+const addProduct = async(req,res)=>{
+  const {user_id,product_id} = req.query;
+
+  const query = "insert into shopping_cart_items (user_id,product_id) values(?,?)"
+
+  DB.query(query,[user_id,product_id],(err,result)=>{
+    if (err) {
+      return res.status(500).json({ message: "database error" });
+    }
+    return res.status(200).json({message:"product added"})
+  })
+}
 module.exports = {
   signupUser,
   loginUser,
   getCurrentUser,
-  logoutUser
+  logoutUser,
+  addProduct
 };
