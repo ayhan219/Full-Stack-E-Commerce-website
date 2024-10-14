@@ -20,6 +20,8 @@ const ProductDetail = () => {
         `http://localhost:5000/api/products/${id}`
       );
       setSingleProduct(response.data);
+      
+      
       setImages(response.data[0].image.split(","));
     } catch (error) {
       console.log(error);
@@ -44,7 +46,8 @@ const ProductDetail = () => {
           {
             user_id: user.id,
             product_id: id,
-            size:selectedSize
+            size:selectedSize,
+            price:singleProduct[0].price
           }
         );
         if (response.status === 200) {

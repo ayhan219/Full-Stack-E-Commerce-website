@@ -2,15 +2,11 @@ import React, { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 
 const ShoppingCartItem = ({ item, index }) => {
-  const show = ()=>{
-    console.log(item);
-    
-  }
+  
   
   return (
     <div
       key={index}
-      onClick={show}
       className="flex items-center justify-between pb-5 border-b"
     >
       <img

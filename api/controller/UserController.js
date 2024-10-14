@@ -119,12 +119,12 @@ const logoutUser = async (req, res) => {
 };
 
 const addProduct = async (req, res) => {
-  const { user_id, product_id,size } = req.body;
-
+  const { user_id, product_id,size,price } = req.body;
+  
   const query =
-    "insert into shopping_cart_items (user_id,product_id,size) values(?,?,?)";
+    "insert into shopping_cart_items (user_id,product_id,size,price) values(?,?,?,?)";
 
-  DB.query(query, [user_id, product_id,size], (err, result) => {
+  DB.query(query, [user_id, product_id,size,price], (err, result) => {
     if (err) {
       return res.status(500).json({ message: "database error" });
     }

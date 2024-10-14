@@ -7,6 +7,7 @@ import axios from "axios";
 const ShoppingCart = () => {
   const { loading, user } = useContext(UserContext);
   const [shoppingcartItem, setShoppingcartItem] = useState([]);
+  const [totalPrice,setTotalPrice] = useState(0);
   const [image, setImage] = useState([]);
   const getShoppingCart = async () => {
     try {
@@ -18,7 +19,16 @@ const ShoppingCart = () => {
           },
         }
       );
+     
+      let total =0;
+
+      response.data.forEach((item)=>{
+        total += Number(item.price)
+      })
+
+      
       setShoppingcartItem(response.data);
+      setTotalPrice(total)
     } catch (error) {
       console.log(error);
     }
@@ -86,7 +96,7 @@ const ShoppingCart = () => {
           </h3>
           <div className="flex justify-between gap-6 pt-12 text-gray-600">
             <p>Subtotal</p>
-            <p>$59.98</p>
+            <p>${totalPrice}</p>
           </div>
           <div className="flex justify-between gap-6 mt-6 text-gray-600">
             <p>Shipping</p>
@@ -95,7 +105,7 @@ const ShoppingCart = () => {
           <hr className="my-4 mt-8" />
           <div className="flex justify-between text-lg font-bold text-gray-900">
             <p>Total</p>
-            <p>$59.98</p>
+            <p>${totalPrice}</p>
           </div>
           <button className="w-full py-2 mt-6 text-white transition-all bg-blue-600 rounded-lg hover:bg-blue-700">
             Proceed to Checkout
