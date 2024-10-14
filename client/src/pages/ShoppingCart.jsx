@@ -50,13 +50,15 @@ const ShoppingCart = () => {
           </div>
 
           <div className="flex gap-2 p-5 text-sm font-medium text-gray-600">
-            <p>Don't have an account?</p>
-            <Link
+            {
+              !user && <><p>Don't have an account?</p><Link
               className="text-blue-600 transition-colors hover:text-blue-800"
               to={"/signup"}
             >
               <strong>Signup</strong>
-            </Link>
+            </Link> </>
+            }
+            
           </div>
 
           {/* Cart Items Header */}

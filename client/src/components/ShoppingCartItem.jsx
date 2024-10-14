@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IoIosClose } from "react-icons/io";
+import axios from "axios"
+import { UserContext } from "../UserContext/UserContext";
 
 const ShoppingCartItem = ({ item, index }) => {
+
+  const {user} = useContext(UserContext);
   
+  const handleDelete = async(id)=>{
+    const response = await axios.delete("http://localhost:5000/api/auth/deleteshoppingcart",{
+      shoppingCartId:id,
+      user_id:user.id
+    })
+    
+    
+  }
   
   return (
     <div
@@ -18,7 +30,7 @@ const ShoppingCartItem = ({ item, index }) => {
       <p className="text-xs sm:text-sm font-medium text-gray-700">{item.type}</p>
       <p className="text-xs sm:text-sm font-medium text-gray-700">{item.forWho}</p>
       <p className="text-xs sm:text-sm font-bold text-gray-900">${item.price}</p>
-      <IoIosClose className="text-xl font-bold duration-100 ease-in-out cursor-pointer hover:text-blue-500" />
+      <IoIosClose onClick={()=>handleDelete(item.id)} className="text-xl font-bold duration-100 ease-in-out cursor-pointer hover:text-blue-500" />
     </div>
   );
 };
