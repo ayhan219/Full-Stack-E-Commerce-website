@@ -84,17 +84,15 @@ const loginUser = async (req, res) => {
         secure: true,
         maxAge: 3600000,
       });
-      return res
-        .status(200)
-        .json({
-          message: "login successfull ",
-          user: {
-            id: user.id,
-            name: user.name,
-            surname: user.surname,
-            email: user.email,
-          },
-        });
+      return res.status(200).json({
+        message: "login successfull ",
+        user: {
+          id: user.id,
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
+        },
+      });
     });
   } catch (error) {
     return res.status(400).json(error);
@@ -119,12 +117,12 @@ const logoutUser = async (req, res) => {
 };
 
 const addProduct = async (req, res) => {
-  const { user_id, product_id,size,price } = req.body;
-  
+  const { user_id, product_id, size, price } = req.body;
+
   const query =
     "insert into shopping_cart_items (user_id,product_id,size,price) values(?,?,?,?)";
 
-  DB.query(query, [user_id, product_id,size,price], (err, result) => {
+  DB.query(query, [user_id, product_id, size, price], (err, result) => {
     if (err) {
       return res.status(500).json({ message: "database error" });
     }
@@ -144,6 +142,19 @@ const getShoppingCart = async (req, res) => {
     return res.status(200).json(result);
   });
 };
+
+const deleteShoppingCart = async (req, res) => {
+  const { shoppingCartId, user_id } = req.body;
+
+  const query = "delete from shopping_cart_items where id = ? and user_id = ?";
+
+  DB.query(query, [shoppingCartId, user_id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "database error" });
+    }
+    return res.status(200).json({ message: "item removed!" });
+  });
+};
 module.exports = {
   signupUser,
   loginUser,
@@ -151,4 +162,5 @@ module.exports = {
   logoutUser,
   addProduct,
   getShoppingCart,
+  deleteShoppingCart,
 };
