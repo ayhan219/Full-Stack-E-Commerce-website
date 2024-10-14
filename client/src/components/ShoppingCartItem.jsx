@@ -8,10 +8,24 @@ const ShoppingCartItem = ({ item, index }) => {
   const {user} = useContext(UserContext);
   
   const handleDelete = async(id)=>{
+    
+    
+   try {
     const response = await axios.delete("http://localhost:5000/api/auth/deleteshoppingcart",{
-      shoppingCartId:id,
+      data:{
+        shoppingCartId: id,
       user_id:user.id
-    })
+      }
+    })    
+    if(response.status===200){
+      window.location.reload();
+    }
+    
+   } catch (error) {
+    console.log(error);
+    
+   }
+
     
     
   }

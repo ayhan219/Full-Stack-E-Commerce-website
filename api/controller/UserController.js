@@ -133,7 +133,7 @@ const addProduct = async (req, res) => {
 const getShoppingCart = async (req, res) => {
   const { user_id } = req.query;
 
-  const query = `select p.*, sci.size from shopping_cart_items sci join products p on sci.product_id = p.id where sci.user_id = ?`;
+  const query = `select p.*, sci.size,sci.id from shopping_cart_items sci join products p on sci.product_id = p.id where sci.user_id = ?`;
 
   DB.query(query, [user_id], (err, result) => {
     if (err) {
@@ -145,6 +145,7 @@ const getShoppingCart = async (req, res) => {
 
 const deleteShoppingCart = async (req, res) => {
   const { shoppingCartId, user_id } = req.body;
+  
 
   const query = "delete from shopping_cart_items where id = ? and user_id = ?";
 
