@@ -62,7 +62,7 @@ const ShoppingCart = () => {
           {/* Cart Items Header */}
           <div className="flex flex-col gap-2 p-5 pt-0">
             <div className="flex items-center justify-between font-semibold text-gray-700">
-              <h3>2 items</h3>
+              <h3>{shoppingcartItem.length} items</h3>
               <Link
                 to="/products"
                 className="text-sm text-blue-600 hover:text-blue-800"
