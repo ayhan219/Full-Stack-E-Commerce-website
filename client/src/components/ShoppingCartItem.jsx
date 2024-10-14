@@ -14,10 +14,10 @@ const ShoppingCartItem = ({ item, index }) => {
         src={`http://localhost:5000/${item.image.split(",")[0]}`}
         alt="Shirt"
       />
-      <p className="text-sm font-medium text-gray-700">{item.size}</p>
-      <p className="text-sm font-medium text-gray-700">{item.type}</p>
-      <p className="text-sm font-medium text-gray-700">{item.forWho}</p>
-      <p className="text-sm font-bold text-gray-900">${item.price}</p>
+      <p className="text-xs sm:text-sm font-medium text-gray-700">{item.size}</p>
+      <p className="text-xs sm:text-sm font-medium text-gray-700">{item.type}</p>
+      <p className="text-xs sm:text-sm font-medium text-gray-700">{item.forWho}</p>
+      <p className="text-xs sm:text-sm font-bold text-gray-900">${item.price}</p>
       <IoIosClose className="text-xl font-bold duration-100 ease-in-out cursor-pointer hover:text-blue-500" />
     </div>
   );
