@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
     const [loading,setLoading] = useState(false);
     const [productId,setProductId] = useState("");
+    const [shoppingcartNumber,setShoppingcartNumber] = useState(0);
 
     const getCurrentUser = async () => {
         try {
@@ -52,7 +53,7 @@ export const UserProvider = ({ children }) => {
     }, [categories]); 
 
     return (
-        <UserContext.Provider value={{ user, setUser, categories, setCategories, setProducts, products,loading,productId,setProductId }}>
+        <UserContext.Provider value={{ user, setUser, categories, setCategories, setProducts, products,loading,productId,setProductId,shoppingcartNumber,setShoppingcartNumber }}>
             {children}
         </UserContext.Provider>
     );
