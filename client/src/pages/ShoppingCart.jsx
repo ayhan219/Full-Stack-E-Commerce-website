@@ -5,7 +5,7 @@ import { UserContext } from "../UserContext/UserContext";
 import axios from "axios";
 
 const ShoppingCart = () => {
-  const { loading, user,setShoppingcartNumber } = useContext(UserContext);
+  const { loading, user } = useContext(UserContext);
   const [shoppingcartItem, setShoppingcartItem] = useState([]);
   const [totalPrice,setTotalPrice] = useState(0);
   const [image, setImage] = useState([]);
@@ -29,7 +29,6 @@ const ShoppingCart = () => {
 
       
       setShoppingcartItem(response.data);
-      setShoppingcartNumber(response.data.length);
       
       
       setTotalPrice(total)

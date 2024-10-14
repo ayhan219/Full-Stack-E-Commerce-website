@@ -11,7 +11,7 @@ import axios from "axios"
 const Navbar = () => {
   const [openLoginArea, setOpenLoginArea] = useState(false);
   const [openNavbar, setOpenNavbar] = useState(false);
-  const {setCategories} = useContext(UserContext);
+  const {setCategories,shoppingcartNumber} = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -153,9 +153,11 @@ const Navbar = () => {
           <Link onClick={()=>setOpenNavbar(false)} to={"/shoppingcart"}>
           <div className="relative cursor-pointer ">
             <FiShoppingBag className="text-2xl md:text-3xl" />
-            <span className="absolute flex items-center justify-center w-5 h-5 text-sm font-bold text-white bg-black rounded-full -top-2 -right-2">
-              1
-            </span>
+           {
+            shoppingcartNumber > 0 &&  <span className="absolute flex items-center justify-center w-5 h-5 text-sm font-bold text-white bg-black rounded-full -top-2 -right-2">
+            {shoppingcartNumber}
+          </span>
+           }
           </div>
           </Link>
           <Link onClick={()=>setOpenNavbar(false)} to={"/shoppingcart"}>

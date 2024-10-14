@@ -7,7 +7,8 @@ const {
   logoutUser,
   addProduct,
   getShoppingCart,
-  deleteShoppingCart
+  deleteShoppingCart,
+  getItemNumber
 } = require("../controller/UserController");
 const AuthMiddleware = require("../middleware/AuthMiddleware");
 
@@ -17,6 +18,7 @@ router.get("/getcurrent", AuthMiddleware, getCurrentUser);
 router.post("/logout", logoutUser);
 router.post("/addproduct", addProduct);
 router.get("/getshoppingcart", getShoppingCart);
+router.get("/getitemnumber",getItemNumber)
 router.delete("/deleteshoppingcart",deleteShoppingCart)
 
 module.exports = router;

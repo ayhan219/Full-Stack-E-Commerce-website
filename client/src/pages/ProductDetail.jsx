@@ -12,7 +12,7 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState("");
   const [images, setImages] = useState([]);
   const [singleProduct, setSingleProduct] = useState(null);
-  const { user } = useContext(UserContext);
+  const { user,getItemNumber } = useContext(UserContext);
 
   const getSingleProduct = async () => {
     try {
@@ -52,6 +52,7 @@ const ProductDetail = () => {
         );
         if (response.status === 200) {
           toast.success("product added!");
+          getItemNumber();
         } else {
           toast.error("error while adding product!");
         }

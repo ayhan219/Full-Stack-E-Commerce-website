@@ -43,17 +43,39 @@ export const UserProvider = ({ children }) => {
         }
     };
 
+    const getItemNumber = async()=>{
+        try {
+            const response = await axios.get("http://localhost:5000/api/auth/getitemnumber",{
+                params:{
+                    user_id:user.id
+                }
+            })
+            
+            console.log(response.data[0].itemCount);
+            setShoppingcartNumber(response.data[0].itemCount)
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
+
     useEffect(() => {
         getCurrentUser();
        
     }, []); 
+    useEffect(() => {
+        if (user) {
+            getItemNumber();
+        }
+    }, [user]);
 
     useEffect(() => {
         getProducts(categories);
     }, [categories]); 
 
     return (
-        <UserContext.Provider value={{ user, setUser, categories, setCategories, setProducts, products,loading,productId,setProductId,shoppingcartNumber,setShoppingcartNumber }}>
+        <UserContext.Provider value={{ user, setUser, categories, setCategories, setProducts, products,loading,productId,setProductId,shoppingcartNumber,setShoppingcartNumber,getItemNumber }}>
             {children}
         </UserContext.Provider>
     );

@@ -156,6 +156,21 @@ const deleteShoppingCart = async (req, res) => {
     return res.status(200).json({ message: "item removed!" });
   });
 };
+
+const getItemNumber = async(req,res)=>{
+const {user_id} = req.query;
+
+
+
+const query = "SELECT COUNT(*) AS itemCount FROM shopping_cart_items WHERE user_id = ?;"
+
+DB.query(query,[user_id],(err,result)=>{
+  if (err) {
+    return res.status(500).json({ message: "database error" });
+  }
+  return res.status(200).json(result)
+})
+}
 module.exports = {
   signupUser,
   loginUser,
@@ -164,4 +179,5 @@ module.exports = {
   addProduct,
   getShoppingCart,
   deleteShoppingCart,
+  getItemNumber
 };
