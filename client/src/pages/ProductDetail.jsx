@@ -73,12 +73,17 @@ const ProductDetail = () => {
         product_id,
         user_id:user.id
       })
-      if(response.data ===200){
-        setIsAddedToFavorite(true);
+      if(response.status === 200){
+        toast.success("Product added to your favorites!")
       }
-      console.log(response.data);
+      else {
+        toast.error("An unexpected error occurred!");
+      }
+      
     } catch (error) {
-      console.log(error);
+      if (error.response && error.response.status === 400) {
+        toast.error("This product is already in your favorites!");
+      }
       
       
     }
@@ -139,7 +144,7 @@ const ProductDetail = () => {
             </h3>
             <div className="text-4xl flex flex-col items-center gap-3">
               <span className="text-sm">Add to Favorites</span>
-              <FaHeart onClick={()=>handleFavorite(singleProduct[0].id)}  className="text-gray-800 cursor-pointer hover:scale-95 ease-in-out duration-100" />
+              <FaHeart onClick={()=>handleFavorite(singleProduct[0].id)}  className="text-red-700 cursor-pointer hover:scale-95 ease-in-out duration-100" />
             </div>
           </div>
           <div className="pt-10">

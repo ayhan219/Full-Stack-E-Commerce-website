@@ -174,10 +174,16 @@ DB.query(query,[user_id],(err,result)=>{
 
 const addToFavorites = async(req,res)=>{
   const {user_id,product_id} = req.body;
-  console.log(user_id,product_id);
-  
 
-  const query = "insert into favorites (user_id,product_id) values(?,?)";
+  const checkQuery = "select * from favorites where user_id = ? and product_id = ?"
+  DB.query(checkQuery,[user_id,product_id],(err,result)=>{
+    if (err) {
+      return res.status(500).json({ message: "database error" });
+    }
+    if(result.length > 0){
+      return res.status(400).json({ message: "This product is already in your favorites!" });
+    }
+    const query = "insert into favorites (user_id,product_id) values(?,?)";
 
   DB.query(query,[user_id,product_id] ,(err,result)=>{
     if (err) {
@@ -185,6 +191,9 @@ const addToFavorites = async(req,res)=>{
     }
     return res.status(200).json({message:"product added to favorites!"})
   })
+  })
+
+  
 }
 
 module.exports = {
