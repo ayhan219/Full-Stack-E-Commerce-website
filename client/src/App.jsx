@@ -10,6 +10,7 @@ import ShoppingCart from "./pages/ShoppingCart"
 import ProductDetail from "./pages/ProductDetail"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Favorite from "./pages/Favorite"
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/shoppingcart" element={<ShoppingCart />} />
         <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/favorites" element={<Favorite />} />
       </Routes>
       <Footer />
       </UserProvider>
