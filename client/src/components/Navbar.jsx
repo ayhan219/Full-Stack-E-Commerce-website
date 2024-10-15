@@ -145,9 +145,11 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-3 text-lg cursor-pointer  relative  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full">
           <MdFavoriteBorder className="text-2xl md:text-3xl " />
+          <Link to={"/favorites"}>
           <a href="" className="hidden md:block">
             Favorite
           </a>
+          </Link>
         </div>
         <div className="flex items-center gap-3 text-lg  cursor-pointer  relative  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full">
           <Link onClick={()=>setOpenNavbar(false)} to={"/shoppingcart"}>
