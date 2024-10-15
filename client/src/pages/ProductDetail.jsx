@@ -12,8 +12,9 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [selectedSize, setSelectedSize] = useState("");
   const [images, setImages] = useState([]);
-  const [singleProduct, setSingleProduct] = useState(null);
+  const [singleProduct, setSingleProduct] = useState({});
   const { user,getItemNumber } = useContext(UserContext);
+  const [isAddedToFavorite,setIsAddedToFavorite] = useState(false);
 
   const getSingleProduct = async () => {
     try {
@@ -21,6 +22,9 @@ const ProductDetail = () => {
         `http://localhost:5000/api/products/${id}`
       );
       setSingleProduct(response.data);
+      console.log(response.data);
+      
+      
       
       
       setImages(response.data[0].image.split(","));
@@ -62,6 +66,27 @@ const ProductDetail = () => {
       }
     }
   };
+
+  const handleFavorite = async(product_id)=>{
+    try {
+      const response = await axios.post("http://localhost:5000/api/auth/addtofavorites",{
+        product_id,
+        user_id:user.id
+      })
+      if(response.data ===200){
+        setIsAddedToFavorite(true);
+      }
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+      
+      
+    }
+    
+
+    
+  }
+ 
   return (
     <div className="w-full h-[160vh] flex justify-center">
       <div className="w-full h-full  flex shadow-xl">
@@ -110,11 +135,11 @@ const ProductDetail = () => {
         <div className="w-[50%] h-full p-10">
           <div className="flex text-3xl justify-between ">
             <h3>
-              De Casual Slim T-Shirt <span>Men</span>{" "}
+              De Casual Slim {singleProduct[0]?.type} <span>{singleProduct[0]?.forWho}</span>{" "}
             </h3>
             <div className="text-4xl flex flex-col items-center gap-3">
               <span className="text-sm">Add to Favorites</span>
-              <FaHeart  className="text-gray-800 cursor-pointer hover:scale-95 ease-in-out duration-100" />
+              <FaHeart onClick={()=>handleFavorite(singleProduct[0].id)}  className="text-gray-800 cursor-pointer hover:scale-95 ease-in-out duration-100" />
             </div>
           </div>
           <div className="pt-10">
