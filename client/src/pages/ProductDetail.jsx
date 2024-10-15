@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../UserContext/UserContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaHeart } from "react-icons/fa";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -107,10 +108,14 @@ const ProductDetail = () => {
           </div>
         </div>
         <div className="w-[50%] h-full p-10">
-          <div className="flex text-3xl">
+          <div className="flex text-3xl justify-between ">
             <h3>
               De Casual Slim T-Shirt <span>Men</span>{" "}
             </h3>
+            <div className="text-4xl flex flex-col items-center gap-3">
+              <span className="text-sm">Add to Favorites</span>
+              <FaHeart  className="text-gray-800 cursor-pointer hover:scale-95 ease-in-out duration-100" />
+            </div>
           </div>
           <div className="pt-10">
             <div className="flex items-center  text-2xl">
