@@ -196,6 +196,20 @@ const addToFavorites = async(req,res)=>{
   
 }
 
+const getFavorites = async(req,res)=>{
+  const {user_id} = req.body;
+
+  const query = "select p.* from favorites f join products p on f.product_id = p.id where f.user_id = ?"
+
+
+  DB.query(query,[user_id],(err,result)=>{
+    if (err) {
+      return res.status(500).json({ message: "database error" });
+    }
+    return res.status(200).json(result)
+  })
+}
+
 module.exports = {
   signupUser,
   loginUser,
@@ -205,5 +219,6 @@ module.exports = {
   getShoppingCart,
   deleteShoppingCart,
   getItemNumber,
-  addToFavorites
+  addToFavorites,
+  getFavorites
 };

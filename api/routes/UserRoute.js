@@ -9,7 +9,8 @@ const {
   getShoppingCart,
   deleteShoppingCart,
   getItemNumber,
-  addToFavorites
+  addToFavorites,
+  getFavorites
 } = require("../controller/UserController");
 const AuthMiddleware = require("../middleware/AuthMiddleware");
 
@@ -22,5 +23,6 @@ router.get("/getshoppingcart", getShoppingCart);
 router.get("/getitemnumber",getItemNumber)
 router.delete("/deleteshoppingcart",deleteShoppingCart)
 router.post("/addtofavorites",addToFavorites)
+router.get("/getfavorites",getFavorites)
 
 module.exports = router;
