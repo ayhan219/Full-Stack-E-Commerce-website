@@ -72,7 +72,8 @@ const Navbar = () => {
         </a>
         <a
         onClick={()=>handleCategories("WOMEN")}
-          className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+      
+          className="relative  inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
         >
           WOMEN
         </a>
@@ -80,19 +81,19 @@ const Navbar = () => {
 
         <a
            onClick={()=>handleCategories("MEN")}
-          className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+          className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
         >
           MEN
         </a>
         <a
            onClick={()=>handleCategories("CHILD")}
-          className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+          className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
         >
           CHILD
         </a>
         <a
            onClick={()=>handleCategories("BABY")}
-          className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+          className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
         >
           BABY
         </a>
@@ -144,13 +145,12 @@ const Navbar = () => {
           )}
         </div>
         <div className="flex items-center gap-3 text-lg cursor-pointer  relative  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full">
+        <Link onClick={()=>setOpenNavbar(false)} to={"/favorites"}>
           <MdFavoriteBorder className="text-2xl md:text-3xl " />
-          <Link to={"/favorites"}>
-          <Link to={"/favorites"}>
-          <a href="" className="hidden md:block">
+          
+          <a className="hidden md:block">
             Favorite
           </a>
-          </Link>
           </Link>
         </div>
         <div className="flex items-center gap-3 text-lg  cursor-pointer  relative  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full">
@@ -169,7 +169,6 @@ const Navbar = () => {
             Shopping Cart
           </a>
           </Link>
-          <div></div>
         </div>
       </div>
       {openNavbar && (
@@ -191,45 +190,45 @@ const Navbar = () => {
         </a>
             <a
               onClick={()=>handleCategories("WOMEN")}
-              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
             >
               WOMEN
             </a>
 
             <a
               onClick={()=>handleCategories("MEN")}
-              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
             >
               MEN
             </a>
             <a
                onClick={()=>handleCategories("CHILD")}
-              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
             >
               CHILD
             </a>
             <a
               onClick={()=>handleCategories("BABY")}
-              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
             >
               BABY
             </a>
            <div className="flex flex-col gap-5 pt-10">
            <a
               href="#"
-              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
             >
               ABOUT US
             </a>
             <a
               href="#"
-              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
             >
               HELP
             </a>
             <a
               href="#"
-              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
             >
               CONTACT US
             </a>
