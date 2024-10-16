@@ -51,7 +51,21 @@ DB.query(query,[id],(err,result)=>{
 })
 }
 
+const removeFavorite = async(req,res)=>{
+    const {user_id,id} = req.body;
+
+    const query = "delete from favorites where user_id = ? and id = ?"
+
+    DB.query(query,[user_id,id],(err,result)=>{
+        if (err) {
+            return res.status(500).json({ message: "database error" });
+        }
+        return res.status(200).json({message:"product removed from favorites"})
+    })
+}
+
 module.exports = {
     getProducts,
-    getSingleProduct
+    getSingleProduct,
+    removeFavorite
 };

@@ -7,7 +7,7 @@ import axios from "axios";
 const ShoppingCart = () => {
   const { loading, user } = useContext(UserContext);
   const [shoppingcartItem, setShoppingcartItem] = useState([]);
-  const [totalPrice,setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [image, setImage] = useState([]);
 
   const getShoppingCart = async () => {
@@ -20,18 +20,16 @@ const ShoppingCart = () => {
           },
         }
       );
-     
-      let total =0;
 
-      response.data.forEach((item)=>{
-        total += Number(item.price)
-      })
+      let total = 0;
 
-      
+      response.data.forEach((item) => {
+        total += Number(item.price);
+      });
+
       setShoppingcartItem(response.data);
-      
-      
-      setTotalPrice(total)
+
+      setTotalPrice(total);
     } catch (error) {
       console.log(error);
     }
@@ -53,15 +51,17 @@ const ShoppingCart = () => {
           </div>
 
           <div className="flex gap-2 p-5 text-sm font-medium text-gray-600">
-            {
-              !user && <><p>Don't have an account?</p><Link
-              className="text-blue-600 transition-colors hover:text-blue-800"
-              to={"/signup"}
-            >
-              <strong>Signup</strong>
-            </Link> </>
-            }
-            
+            {!user && (
+              <>
+                <p>Don't have an account?</p>
+                <Link
+                  className="text-blue-600 transition-colors hover:text-blue-800"
+                  to={"/signup"}
+                >
+                  <strong>Signup</strong>
+                </Link>{" "}
+              </>
+            )}
           </div>
 
           {/* Cart Items Header */}
