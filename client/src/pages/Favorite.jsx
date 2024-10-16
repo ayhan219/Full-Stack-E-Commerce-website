@@ -29,18 +29,31 @@ const Favorite = () => {
       getFavorites();
     }
   }, [user]);
+    
 
   return (
     <div className="w-full h-[80vh] flex justify-center bg-gray-100">
       <div className="w-[80%] h-full flex flex-col items-center">
-        <div className="text-3xl pt-10 pb-5">
+        <div className="pt-10 pb-5 text-3xl">
           <h2>Favorite Products</h2>
         </div>
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {favoriteItems.map((item, index) => (
-            <FavoriteItem item={item} index={index} />
-          ))}
-        </div>
+       {
+        favoriteItems.length>0 ?  <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+        {favoriteItems.map((item, index) => (
+          <FavoriteItem item={item} index={index} />
+        ))}
+      </div> : <div className='flex flex-col items-center gap-7'>
+            <div className='w-32 h-32 mt-16'>
+                <img className='object-cover w-full h-full' src="https://www.lcw.com/Resource/Images/FavoriYok.svg" alt="" />
+            </div>
+            <div className='text-[#193DB0] text-xl font-semibold'>
+                <h2>You Don't Have a Favorite Product</h2>
+            </div>
+            <div className='text-[#555555] text-xl font-semibold'>
+                <p>You have not added a product to your favorites, all you have to do is click on the small heart icon on the product images.</p>
+            </div>
+            </div> 
+       }
       </div>
     </div>
   );

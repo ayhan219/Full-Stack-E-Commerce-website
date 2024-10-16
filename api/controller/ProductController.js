@@ -52,8 +52,8 @@ DB.query(query,[id],(err,result)=>{
 }
 
 const removeFavorite = async(req,res)=>{
-    const {user_id,id} = req.body;
 
+    const {user_id,id} = req.body;
     const query = "delete from favorites where user_id = ? and id = ?"
 
     DB.query(query,[user_id,id],(err,result)=>{
