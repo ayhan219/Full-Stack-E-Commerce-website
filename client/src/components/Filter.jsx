@@ -5,10 +5,15 @@ import { UserContext } from "../UserContext/UserContext";
 
 const Filter = () => {
   const [openFilter, setOpenFilter] = useState(false);
-  const { setCategories,selectedProductTypes,setSelectedProductTypes } = useContext(UserContext);
+  const {
+    setCategories,
+    selectedProductTypes,
+    setSelectedProductTypes,
+    color,
+    setColor,
+  } = useContext(UserContext);
 
   const [selectedCategory, setSelectedCategory] = useState("");
-  
 
   const handleCheckboxChange = (category) => {
     const isSelected = selectedCategory === category;
@@ -28,6 +33,14 @@ const Filter = () => {
       : [...selectedProductTypes, productType];
     setSelectedProductTypes(newSelectedProductTypes);
     console.log(newSelectedProductTypes);
+  };
+
+  const handleColorChange = (selectedColor) => {
+    if (selectedColor === color) {
+      setColor(""); 
+    } else {
+      setColor(selectedColor); 
+    }
   };
 
   return (
@@ -147,8 +160,8 @@ const Filter = () => {
           </div>
         </div>
         <div className="pt-5">
-        <h3 className="pl-5 text-xl font-medium text-gray-600">Color</h3>
-        <div className="w-full flex flex-col gap-2 p-5">
+          <h3 className="pl-5 text-xl font-medium text-gray-600">Color</h3>
+          <div className="w-full flex flex-col gap-2 p-5">
             {[
               { name: "Red", hex: "#ff0000" },
               { name: "Blue", hex: "#0000ff" },
@@ -164,9 +177,12 @@ const Filter = () => {
             ].map(({ name, hex }) => (
               <label className="flex items-center gap-2" key={name}>
                 <input
-                  type="checkbox"
+                  type="checkbox" 
                   value={name}
+                  checked={color === name}
+                  onChange={() => handleColorChange(name)}
                 />
+
                 <span
                   className="w-4 h-4 rounded-full"
                   style={{ backgroundColor: hex }}

@@ -12,6 +12,7 @@ export const UserProvider = ({ children }) => {
     const [productId,setProductId] = useState("");
     const [shoppingcartNumber,setShoppingcartNumber] = useState(0);
     const [selectedProductTypes, setSelectedProductTypes] = useState([]);
+    const [color,setColor] = useState("");
 
     const getCurrentUser = async () => {
         try {
@@ -30,8 +31,8 @@ export const UserProvider = ({ children }) => {
         try {
             const selectedCategoriesString = selectedProductTypes.join(',');
             const url = category 
-                ? `http://localhost:5000/api/products?categories=${category}&type=${selectedCategoriesString}`
-                : `http://localhost:5000/api/products?type=${selectedCategoriesString}`;
+                ? `http://localhost:5000/api/products?categories=${category}&type=${selectedCategoriesString}&color=${color}`
+                : `http://localhost:5000/api/products?type=${selectedCategoriesString}&color=${color}`;
     
             const response = await axios.get(url);
             
@@ -74,10 +75,10 @@ export const UserProvider = ({ children }) => {
 
     useEffect(() => {
         getProducts(categories);
-    }, [categories,selectedProductTypes]); 
+    }, [categories,selectedProductTypes,color]); 
 
     return (
-        <UserContext.Provider value={{ user, setUser, categories, setCategories, setProducts, products,loading,productId,setProductId,shoppingcartNumber,setShoppingcartNumber,getItemNumber,selectedProductTypes,setSelectedProductTypes }}>
+        <UserContext.Provider value={{ user, setUser, categories, setCategories, setProducts, products,loading,productId,setProductId,shoppingcartNumber,setShoppingcartNumber,getItemNumber,selectedProductTypes,setSelectedProductTypes,color,setColor }}>
             {children}
         </UserContext.Provider>
     );
