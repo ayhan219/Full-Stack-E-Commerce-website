@@ -146,6 +146,36 @@ const Filter = () => {
             )}
           </div>
         </div>
+        <div className="pt-5">
+        <h3 className="pl-5 text-xl font-medium text-gray-600">Color</h3>
+        <div className="w-full flex flex-col gap-2 p-5">
+            {[
+              { name: "Red", hex: "#ff0000" },
+              { name: "Blue", hex: "#0000ff" },
+              { name: "Green", hex: "#008000" },
+              { name: "Black", hex: "#000000" },
+              { name: "White", hex: "#ffffff" },
+              { name: "Yellow", hex: "#ffff00" },
+              { name: "Orange", hex: "#ffa500" },
+              { name: "Purple", hex: "#800080" },
+              { name: "Brown", hex: "#a52a2a" },
+              { name: "Pink", hex: "#ffc0cb" },
+              { name: "Gray", hex: "#808080" },
+            ].map(({ name, hex }) => (
+              <label className="flex items-center gap-2" key={name}>
+                <input
+                  type="checkbox"
+                  value={name}
+                />
+                <span
+                  className="w-4 h-4 rounded-full"
+                  style={{ backgroundColor: hex }}
+                ></span>
+                <span className="text-sm text-gray-700">{name}</span>
+              </label>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
