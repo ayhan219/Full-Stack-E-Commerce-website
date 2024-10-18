@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <div className='w-full h-[70vh] flex justify-center pt-12'>
+    <div className='w-full h-[80vh] flex justify-center pt-12'>
       <div className='relative w-full h-full max-w-5xl overflow-hidden rounded-lg shadow-lg'>
         <img
           className='object-cover w-full h-full transition-transform duration-500 hover:scale-105'
@@ -8,8 +8,8 @@ const Header = () => {
           alt="Model in Business Suit"
         />
         <div className='absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white'>
-          <h1 className='text-4xl font-bold'>Fashion Trends 2024</h1>
-          <p className='mt-2 text-lg'>Discover the latest styles and trends</p>
+          <h1 className='text-4xl md:text-6xl font-bold'>Fashion Trends 2024</h1>
+          <p className='mt-2 text-lg md:text-2xl font-bold'>Discover the latest styles and trends</p>
         </div>
       </div>
     </div>

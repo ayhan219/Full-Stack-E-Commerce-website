@@ -29,10 +29,10 @@ const Trend = () => {
   }
   return (
     <div className="w-full h-auto bg-gray-100 py-16">
-      <div className="text-5xl font-light p-3 pb-12 text-[#212529] text-center">
+      <div className="text-5xl font-semibold p-3 pb-12 text-[#1F2937] text-center">
         <h2 className="tracking-wider">Trends</h2>
       </div>
-      <div className="flex flex-col w-full gap-8 p-5 md:flex-row md:justify-center items-center">
+      <div className="flex flex-col w-full gap-8 p-5 md:flex-row md:justify-center items-ce">
         {[
           {
             src: "https://static.ticimax.cloud/cdn-cgi/image/width=-,quality=85/46461/uploads/urunresimleri/buyuk/siyah-stretch-uzun-elbise-nazliye-moda-8e2a80.jpeg",
