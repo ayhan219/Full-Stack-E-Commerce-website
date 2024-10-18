@@ -11,6 +11,7 @@ export const UserProvider = ({ children }) => {
     const [loading,setLoading] = useState(false);
     const [productId,setProductId] = useState("");
     const [shoppingcartNumber,setShoppingcartNumber] = useState(0);
+    const [selectedProductTypes, setSelectedProductTypes] = useState([]);
 
     const getCurrentUser = async () => {
         try {
@@ -27,21 +28,22 @@ export const UserProvider = ({ children }) => {
     const getProducts = async (category) => {
         setLoading(true);
         try {
-            
+            const selectedCategoriesString = selectedProductTypes.join(',');
             const url = category 
-                ? `http://localhost:5000/api/products?categories=${category}` 
-                : "http://localhost:5000/api/products";
-
+                ? `http://localhost:5000/api/products?categories=${category}&type=${selectedCategoriesString}`
+                : `http://localhost:5000/api/products?type=${selectedCategoriesString}`;
+    
             const response = await axios.get(url);
             
             setProducts(response.data);
             
         } catch (error) {
             console.log(error);
-        }finally{
-            setLoading(false)
+        } finally {
+            setLoading(false);
         }
     };
+    
 
     const getItemNumber = async()=>{
         try {
@@ -72,10 +74,10 @@ export const UserProvider = ({ children }) => {
 
     useEffect(() => {
         getProducts(categories);
-    }, [categories]); 
+    }, [categories,selectedProductTypes]); 
 
     return (
-        <UserContext.Provider value={{ user, setUser, categories, setCategories, setProducts, products,loading,productId,setProductId,shoppingcartNumber,setShoppingcartNumber,getItemNumber }}>
+        <UserContext.Provider value={{ user, setUser, categories, setCategories, setProducts, products,loading,productId,setProductId,shoppingcartNumber,setShoppingcartNumber,getItemNumber,selectedProductTypes,setSelectedProductTypes }}>
             {children}
         </UserContext.Provider>
     );

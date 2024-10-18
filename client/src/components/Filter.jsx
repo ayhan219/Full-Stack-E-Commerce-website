@@ -5,24 +5,30 @@ import { UserContext } from "../UserContext/UserContext";
 
 const Filter = () => {
   const [openFilter, setOpenFilter] = useState(false);
-  const { categories, setCategories } = useContext(UserContext);
+  const { setCategories,selectedProductTypes,setSelectedProductTypes } = useContext(UserContext);
 
   const [selectedCategory, setSelectedCategory] = useState("");
+  
 
   const handleCheckboxChange = (category) => {
-
     const isSelected = selectedCategory === category;
 
-    
     const newSelectedCategory = isSelected ? "" : category;
 
- 
     setSelectedCategory(newSelectedCategory);
-    setCategories(newSelectedCategory ? newSelectedCategory : ""); 
+    setCategories(newSelectedCategory ? newSelectedCategory : "");
 
     setOpenFilter(false);
-};
+  };
 
+  const handleProductTypes = (productType) => {
+    const isSelected = selectedProductTypes.includes(productType);
+    const newSelectedProductTypes = isSelected
+      ? selectedProductTypes.filter((type) => type !== productType)
+      : [...selectedProductTypes, productType];
+    setSelectedProductTypes(newSelectedProductTypes);
+    console.log(newSelectedProductTypes);
+  };
 
   return (
     <div className="w-[20%]  h-screen md:p-5 bg-white shadow-lg rounded-lg overflow-y-auto">
@@ -37,7 +43,9 @@ const Filter = () => {
             </div>
 
             <div className="pt-8">
-              <h3 className="pl-5 text-xl font-medium text-gray-600">Categories</h3>
+              <h3 className="pl-5 text-xl font-medium text-gray-600">
+                Categories
+              </h3>
               <div className="flex flex-col gap-3 p-5 text-gray-600">
                 {["WOMEN", "MEN", "CHILD", "BABY"].map((category) => (
                   <label
@@ -56,9 +64,10 @@ const Filter = () => {
               </div>
             </div>
 
-            {/* Ürün Tipi bölümü burada kalabilir */}
             <div className="pt-5">
-              <h3 className="pl-5 text-xl font-medium text-gray-600">Product Type</h3>
+              <h3 className="pl-5 text-xl font-medium text-gray-600">
+                Product Type
+              </h3>
               <div className="flex flex-col gap-3 p-5 text-gray-600">
                 <label className="transition duration-150 ease-in-out hover:text-black">
                   <input type="checkbox" className="mr-2" /> Dress
@@ -115,26 +124,26 @@ const Filter = () => {
         </div>
 
         <div className="pt-5">
-          <h3 className="pl-5 text-xl font-medium text-gray-600">Product Type</h3>
+          <h3 className="pl-5 text-xl font-medium text-gray-600">
+            Product Type
+          </h3>
           <div className="flex flex-col gap-3 p-5 text-gray-600">
-            <label className="transition duration-150 ease-in-out hover:text-black">
-              <input type="checkbox" className="mr-2" /> Dress
-            </label>
-            <label className="transition duration-150 ease-in-out hover:text-black">
-              <input type="checkbox" className="mr-2" /> Jeans
-            </label>
-            <label className="transition duration-150 ease-in-out hover:text-black">
-              <input type="checkbox" className="mr-2" /> Pants
-            </label>
-            <label className="transition duration-150 ease-in-out hover:text-black">
-              <input type="checkbox" className="mr-2" /> Jackets
-            </label>
-            <label className="transition duration-150 ease-in-out hover:text-black">
-              <input type="checkbox" className="mr-2" /> Shirts
-            </label>
-            <label className="transition duration-150 ease-in-out hover:text-black">
-              <input type="checkbox" className="mr-2" /> Shorts
-            </label>
+            {["Dress", "Jeans", "Pant", "Jacket", "Shirt", "Short"].map(
+              (type) => (
+                <label
+                  key={type}
+                  className="transition duration-150 ease-in-out hover:text-black"
+                >
+                  <input
+                    type="checkbox"
+                    className="mr-2"
+                    checked={selectedProductTypes.includes(type)}
+                    onChange={() => handleProductTypes(type)}
+                  />
+                  {type}
+                </label>
+              )
+            )}
           </div>
         </div>
       </div>
