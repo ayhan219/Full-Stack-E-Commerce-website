@@ -7,6 +7,8 @@ import { UserContext } from "../UserContext/UserContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaHeart } from "react-icons/fa";
+import {useNavigate} from "react-router-dom"
+
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -15,6 +17,8 @@ const ProductDetail = () => {
   const [singleProduct, setSingleProduct] = useState({});
   const { user,getItemNumber } = useContext(UserContext);
   const [isAddedToFavorite,setIsAddedToFavorite] = useState(false);
+  const navigate = useNavigate();
+  
 
   const getSingleProduct = async () => {
     try {
@@ -44,7 +48,11 @@ const ProductDetail = () => {
   const handleBuy = async () => {
     if (selectedSize === "") {
       console.log("select size!");
-    } else {
+    } 
+    else if(!user){
+      navigate("/login");
+    }
+    else {
       try {
         const response = await axios.post(
           "http://localhost:5000/api/auth/addproduct",
