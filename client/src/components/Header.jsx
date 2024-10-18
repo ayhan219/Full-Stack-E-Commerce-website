@@ -1,13 +1,19 @@
-
-
 const Header = () => {
   return (
     <div className='w-full h-[70vh] flex justify-center pt-12'>
-        <div className='flex items-center justify-center w-full h-full'>
-            <img className='object-cover w-auto h-auto' src="https://dfcdn.defacto.com.tr/Mobile/desktop_ad5430f7-0728-428a-b67f-cc52bbd9e1e7_9b235355-e04a-496c-88cc-491e1887e384_DI_429.jpg" alt="" />
+      <div className='relative w-full h-full max-w-5xl overflow-hidden rounded-lg shadow-lg'>
+        <img
+          className='object-cover w-full h-full transition-transform duration-500 hover:scale-105'
+          src="https://img.freepik.com/free-photo/woman-model-business-suit-wearing-hat_1303-17693.jpg?t=st=1729283665~exp=1729287265~hmac=ac955ed8798d6f8c820fb9748db62838aa551f404aff86d2674f3fd620746da0&w=1380"
+          alt="Model in Business Suit"
+        />
+        <div className='absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white'>
+          <h1 className='text-4xl font-bold'>Fashion Trends 2024</h1>
+          <p className='mt-2 text-lg'>Discover the latest styles and trends</p>
         </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;

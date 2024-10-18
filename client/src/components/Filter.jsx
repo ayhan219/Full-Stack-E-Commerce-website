@@ -11,6 +11,7 @@ const Filter = () => {
     setSelectedProductTypes,
     color,
     setColor,
+
   } = useContext(UserContext);
 
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -32,7 +33,8 @@ const Filter = () => {
       ? selectedProductTypes.filter((type) => type !== productType)
       : [...selectedProductTypes, productType];
     setSelectedProductTypes(newSelectedProductTypes);
-    console.log(newSelectedProductTypes);
+    setOpenFilter(false);
+    
   };
 
   const handleColorChange = (selectedColor) => {
@@ -41,6 +43,7 @@ const Filter = () => {
     } else {
       setColor(selectedColor); 
     }
+    setOpenFilter(false);
   };
 
   return (
@@ -82,26 +85,55 @@ const Filter = () => {
                 Product Type
               </h3>
               <div className="flex flex-col gap-3 p-5 text-gray-600">
-                <label className="transition duration-150 ease-in-out hover:text-black">
-                  <input type="checkbox" className="mr-2" /> Dress
+              {["Dress", "Jeans", "Pant", "Jacket", "Shirt", "Short"].map(
+              (type) => (
+                <label
+                  key={type}
+                  className="transition duration-150 ease-in-out hover:text-black"
+                >
+                  <input
+                    type="checkbox"
+                    className="mr-2"
+                    checked={selectedProductTypes.includes(type)}
+                    onChange={() => handleProductTypes(type)}
+                  />
+                  {type}
                 </label>
-                <label className="transition duration-150 ease-in-out hover:text-black">
-                  <input type="checkbox" className="mr-2" /> Jeans
-                </label>
-                <label className="transition duration-150 ease-in-out hover:text-black">
-                  <input type="checkbox" className="mr-2" /> Pants
-                </label>
-                <label className="transition duration-150 ease-in-out hover:text-black">
-                  <input type="checkbox" className="mr-2" /> Jackets
-                </label>
-                <label className="transition duration-150 ease-in-out hover:text-black">
-                  <input type="checkbox" className="mr-2" /> Shirts
-                </label>
-                <label className="transition duration-150 ease-in-out hover:text-black">
-                  <input type="checkbox" className="mr-2" /> Shorts
-                </label>
+              )
+            )}
               </div>
             </div>
+
+            <div className="w-full flex flex-col gap-2 p-5">
+            {[
+              { name: "Red", hex: "#ff0000" },
+              { name: "Blue", hex: "#0000ff" },
+              { name: "Green", hex: "#008000" },
+              { name: "Black", hex: "#000000" },
+              { name: "White", hex: "#ffffff" },
+              { name: "Yellow", hex: "#ffff00" },
+              { name: "Orange", hex: "#ffa500" },
+              { name: "Purple", hex: "#800080" },
+              { name: "Brown", hex: "#a52a2a" },
+              { name: "Pink", hex: "#ffc0cb" },
+              { name: "Gray", hex: "#808080" },
+            ].map(({ name, hex }) => (
+              <label className="flex items-center gap-2" key={name}>
+                <input
+                  type="checkbox" 
+                  value={name}
+                  checked={color === name}
+                  onChange={() => handleColorChange(name)}
+                />
+
+                <span
+                  className="w-4 h-4 rounded-full"
+                  style={{ backgroundColor: hex }}
+                ></span>
+                <span className="text-sm text-gray-700">{name}</span>
+              </label>
+            ))}
+          </div>
           </div>
 
           <IoMdClose
