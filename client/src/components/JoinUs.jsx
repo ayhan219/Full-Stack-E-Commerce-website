@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 const JoinUs = () => {
 
@@ -12,7 +14,7 @@ const JoinUs = () => {
     
 
   return (
-    <div className="w-full h-[30vh] flex justify-center items-center">
+    <div className="w-full h-[40vh] flex justify-center items-center">
       <div className="w-[70%] h-full ">
         <div className="text-center text-[#212529] text-xl font-medium flex flex-col gap-4">
           <h2>JOIN TO ENTERTAINMENT!</h2>
@@ -28,6 +30,10 @@ const JoinUs = () => {
           <button onClick={()=>selectTopic("man")} className={`w-20 h-12 ${selectedTopic === "man" ? "bg-[#22242A] text-white font-bold" : "border-2 border-gray-400 text-black hover:border-2 hover:border-black"} `}>Man</button>
           
           <button onClick={()=>selectTopic("child")} className={`w-20 h-12 ${selectedTopic === "child" ? "bg-[#22242A] text-white font-bold" : "border-2 border-gray-400 text-black hover:border-2 hover:border-black"} `}>Child</button>
+        </div>
+        <div className="w-full flex justify-center pt-10 gap-10">
+        <TextField id="outlined-basic" label="Enter your email" variant="outlined" />
+        <button className="bg-[#22242A] text-white w-32 hover:bg-white hover:text-black ease-in-out duration-200 hover:border-2 border-black">Subscribe Now</button>
         </div>
       </div>
     </div>
