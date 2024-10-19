@@ -198,6 +198,7 @@ const addToFavorites = async(req,res)=>{
 
 const getFavorites = async(req,res)=>{
   const {user_id} = req.query;
+  
 
   const query = "select p.*,f.id from favorites f join products p on f.product_id = p.id where f.user_id = ?"
 

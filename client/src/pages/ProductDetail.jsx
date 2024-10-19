@@ -171,7 +171,7 @@ const ProductDetail = () => {
               </div>
             </div>
             <div className="pt-20 text-3xl text-[#193DB0]">
-              <h2>29.99$</h2>
+              <h2>{singleProduct[0]?.price}$</h2>
             </div>
             <div className="pt-10 text-xl font-semibold">
               <h2>Size</h2>
