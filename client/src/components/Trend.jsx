@@ -28,7 +28,7 @@ const Trend = () => {
       }
   }
   return (
-    <div className="w-full h-auto bg-gray-100 py-16">
+    <div className="w-full h-auto bg-gray-100 py-16 ">
       <div className="text-5xl font-semibold p-3 pb-12 text-[#1F2937] text-center">
         <h2 className="tracking-wider">Trends</h2>
       </div>
@@ -58,7 +58,7 @@ const Trend = () => {
           <div
             key={index}
             onClick={()=>handleNavigate(index)}
-            className="relative w-full max-w-sm h-[30rem] rounded-lg overflow-hidden shadow-lg cursor-pointer transform transition-transform duration-300 hover:scale-105"
+            className="relative w-full max-w-sm h-[30rem] rounded-lg overflow-hidden shadow-lg cursor-pointer transform transition-transform duration-300 hover:scale-105 animate-slideUp"
           >
             <img
               className="object-cover w-full h-full"
