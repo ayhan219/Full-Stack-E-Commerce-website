@@ -33,6 +33,8 @@ const Filter = () => {
       ? selectedProductTypes.filter((type) => type !== productType)
       : [...selectedProductTypes, productType];
     setSelectedProductTypes(newSelectedProductTypes);
+  
+    
     setOpenFilter(false);
     
   };
@@ -104,7 +106,7 @@ const Filter = () => {
               </div>
             </div>
 
-            <div className="w-full flex flex-col gap-2 p-5">
+            <div className="flex flex-col w-full gap-2 p-5">
             {[
               { name: "Red", hex: "#ff0000" },
               { name: "Blue", hex: "#0000ff" },
@@ -193,7 +195,7 @@ const Filter = () => {
         </div>
         <div className="pt-5">
           <h3 className="pl-5 text-xl font-medium text-gray-600">Color</h3>
-          <div className="w-full flex flex-col gap-2 p-5">
+          <div className="flex flex-col w-full gap-2 p-5">
             {[
               { name: "Red", hex: "#ff0000" },
               { name: "Blue", hex: "#0000ff" },

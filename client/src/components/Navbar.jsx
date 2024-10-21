@@ -9,11 +9,22 @@ import { UserContext } from "../UserContext/UserContext";
 import axios from "axios";
 import { IoCloseCircle } from "react-icons/io5";
 
+
 const Navbar = () => {
   const [openLoginArea, setOpenLoginArea] = useState(false);
   const [openNavbar, setOpenNavbar] = useState(false);
-  const { setCategories, shoppingcartNumber } = useContext(UserContext);
+  const { setCategories, shoppingcartNumber,setSelectedProductTypes } = useContext(UserContext);
   const [openSearchArea, setOpenSearchArea] = useState(false);
+  const [searchTerm,setSearchTerm] = useState("");
+  
+  
+  const allProducts = [
+    { id: 1, name: 'Dress' },
+    { id: 2, name: 'Pant' },
+    { id: 3, name: 'Shirt' },
+    { id: 4, name: 'Jacket' },
+    { id: 5, name: 'Jeans' },
+  ];
 
   const navigate = useNavigate();
 
@@ -49,6 +60,51 @@ const Navbar = () => {
     setOpenNavbar(false);
   };
 
+  const filteredProducts =allProducts.filter((product)=>product.name.toLowerCase().includes(searchTerm.toLowerCase()))
+
+  const handleSearchInput = ()=>{
+    if(searchTerm==="Shirt"){
+      setSelectedProductTypes(["Shirt"])
+      navigate("/products")
+      setOpenSearchArea(false)
+    }
+    else if(searchTerm==="Dress"){
+      setSelectedProductTypes(["Dress"])
+      navigate("/products")
+      setOpenSearchArea(false)
+    }
+    else if(searchTerm==="Pant"){
+      setSelectedProductTypes(["Pant"])
+      navigate("/products")
+      setOpenSearchArea(false)
+    }
+    else if(searchTerm==="Jacket"){
+      setSelectedProductTypes(["Jacket"])
+      navigate("/products")
+      setOpenSearchArea(false)
+    }
+    else if(searchTerm==="Short"){
+      setSelectedProductTypes(["Short"])
+      navigate("/products")
+      setOpenSearchArea(false)
+    }
+    else if(searchTerm==="Jeans"){
+      setSelectedProductTypes(["Jeans"])
+      navigate("/products")
+      setOpenSearchArea(false)
+    }
+    
+    else{
+      navigate("/notfound");
+      setOpenSearchArea(false)
+    }
+    
+
+ 
+
+
+  }
+  
   return (
     <div className="relative flex items-center justify-between w-full h-32 border-b-2 border-gray-400 shadow-md md:p-5">
       <div className="flex items-center gap-3 text-2xl font-medium md:text-4xl">
@@ -247,9 +303,9 @@ const Navbar = () => {
         </div>
       )}
       {openSearchArea && (
-        <div className="fixed inset-0 bg-white z-50">
-          <div className="p-5 flex justify-between h-40 animate-slideDown">
-            <div className="flex  gap-3 text-2xl font-medium md:text-4xl">
+        <div className="fixed inset-0 z-50 bg-white">
+          <div className="flex justify-between h-40 p-5 animate-slideDown">
+            <div className="flex gap-3 text-2xl font-medium md:text-4xl">
               <GiHamburgerMenu
                 onClick={() => setOpenNavbar(!openNavbar)}
                 className="block cursor-pointer md:hidden"
@@ -259,16 +315,19 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className="w-[40%] hidden relative md:block pt-20 ">
+            <div className="md:w-[40%] w-full md:relative   absolute md:block pt-20 ">
               <input
                 onClick={() => setOpenSearchArea(true)}
-                className="w-full h-10 p-2 border-2 border-black outline-none  "
+                onChange={(e)=>setSearchTerm(e.target.value)}
+                value={searchTerm}
+                
+                className="w-full h-10 p-2 text-sm border-2 border-black outline-none md:text-base "
                 type="text"
                 placeholder="Search for product, category or brand"
               />
 
-              <div className="absolute right-0 text-3xl text-black cursor-pointer top-[86px] flex">
-                <CiSearch />
+              <div className="absolute right-6 md:right-0 text-3xl text-black cursor-pointer top-[86px] flex">
+                <CiSearch onClick={()=>handleSearchInput()} />
                 <IoCloseCircle onClick={() => setOpenSearchArea(false)} />
               </div>
             </div>
@@ -276,7 +335,7 @@ const Navbar = () => {
               <div
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className="relative flex  gap-3 text-lg"
+                className="relative flex gap-3 text-lg"
               >
                 <CiUser className="text-2xl md:text-3xl" />
 
@@ -331,7 +390,7 @@ const Navbar = () => {
                   <div className="relative cursor-pointer ">
                     <FiShoppingBag className="text-2xl md:text-3xl" />
                     {shoppingcartNumber > 0 && (
-                      <span className="absolute flex  justify-center w-5 h-5 text-sm font-bold text-white bg-black rounded-full -top-2 -right-2">
+                      <span className="absolute flex justify-center w-5 h-5 text-sm font-bold text-white bg-black rounded-full -top-2 -right-2">
                         {shoppingcartNumber}
                       </span>
                     )}
@@ -345,20 +404,21 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="w-full flex justify-center animate-slideUp ">
-            <div className="w-[40%]   mr-10">
+          <div className="flex items-center justify-center w-full text-center md:text-base animate-slideUp ">
+            <div className="w-[40%] mr-10">
               <div>
-                <h2 className="text-[#212529] text-2xl pt-8">
+                <h2 className="text-[#212529] text-xl md:text-2xl pt-8">
                   Popular Categories
                 </h2>
               </div>
-              <div className="flex w-full justify-between text-base font-semibold gap-5 pt-10">
-                <a>Dress</a>
-                <a>Jeans</a>
-                <a>Pant</a>
-                <a>Jacket</a>
-                <a>Shirt</a>
-                <a>Short</a>
+              <div className={`" ${searchTerm!=="" ? "justify-normal" : "justify-between"} flex md:flex-row flex-col w-full gap-2 md:gap-5 pt-10 text-base font-semibold"`}>
+                {
+                  filteredProducts.map((item,index)=>(
+                    <div key={index}>
+                      <a onClick={()=>setSearchTerm(item.name)} className="cursor-pointer">{item.name}</a>
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </div>

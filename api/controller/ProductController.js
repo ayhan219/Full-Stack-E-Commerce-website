@@ -70,22 +70,8 @@ const removeFavorite = async (req, res) => {
   });
 };
 
-const getSearchedLetter = async(req,res)=>{
-  const {searchedValue} = req.body;
-
-  const query = "select * from products where type = ? "
-
-  DB.query(query,[searchedValue],(err,result)=>{
-    if(err){
-      return res.status(500).json({message:"database error"})
-    }
-    return res.status(200).json(result)
-  })
-}
-
 module.exports = {
   getProducts,
   getSingleProduct,
   removeFavorite,
-  getSearchedLetter
 };
