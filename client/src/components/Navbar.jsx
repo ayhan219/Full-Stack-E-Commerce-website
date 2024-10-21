@@ -223,10 +223,14 @@ const Navbar = () => {
         </div>
       </div>
       {openNavbar && (
-        <div className="absolute z-50 w-full h-24 bg-white -bottom-24">
+        <div className="absolute z-50 w-full h-24 bg-white -bottom-24 animate-slideDown">
           <div className="z-50 flex flex-col gap-5 p-4 bg-white">
             <div className="w-[50%] relative h-auto bg-black ">
               <input
+              onClick={()=>{
+                setOpenSearchArea(true)
+                setOpenNavbar(false)
+              }}
                 className="w-full h-10 p-2 border-2 border-black outline-none"
                 type="text"
                 placeholder="Search"
@@ -295,11 +299,9 @@ const Navbar = () => {
         <div className="fixed inset-0 z-50 bg-white">
           <div className="flex justify-between h-40 p-5 animate-slideDown">
             <div className="flex gap-3 text-2xl font-medium md:text-4xl">
-              <GiHamburgerMenu
-                onClick={() => setOpenNavbar(!openNavbar)}
-                className="block cursor-pointer md:hidden"
-              />
+              
               <Link to="/">
+              
                 <h3 onClick={() => setOpenSearchArea(false)}>DeSuits</h3>
               </Link>
             </div>
@@ -370,14 +372,20 @@ const Navbar = () => {
               <div className="flex  gap-3 text-lg cursor-pointer  relative  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full">
                 <Link
                   className="flex gap-3"
-                  onClick={() => setOpenNavbar(false)}
+                  onClick={() => {
+                    setOpenNavbar(false)
+                    setOpenSearchArea(false)
+                  }}
                   to={"/favorites"}
                 >
                   <MdFavoriteBorder className="text-2xl md:text-3xl " />
                 </Link>
               </div>
               <div className="flex  gap-3 text-lg  cursor-pointer  relative  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-500 after:transition-all after:duration-300 hover:after:w-full">
-                <Link onClick={() => setOpenNavbar(false)} to={"/shoppingcart"}>
+                <Link onClick={() => {
+                  setOpenNavbar(false)
+                  setOpenSearchArea(false)
+                }} to={"/shoppingcart"}>
                   <div className="relative cursor-pointer ">
                     <FiShoppingBag className="text-2xl md:text-3xl" />
                     {shoppingcartNumber > 0 && (
@@ -388,7 +396,10 @@ const Navbar = () => {
                   </div>
                 </Link>
                 <Link
-                  onClick={() => setOpenNavbar(false)}
+                  onClick={() => {
+                    setOpenNavbar(false)
+                    setOpenSearchArea(false)
+                  }}
                   to={"/shoppingcart"}
                 ></Link>
               </div>
