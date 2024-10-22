@@ -101,10 +101,10 @@ const ProductDetail = () => {
   }
  
   return (
-    <div className="w-full h-[160vh] flex justify-center">
+    <div className="w-full h-[170vh] flex justify-center">
       <div className="w-full h-full  flex shadow-xl">
         <div className="w-full  h-full p-5">
-          <div className="w-full h-[45%] flex">
+          <div className="w-full h-[45%] flex md:flex-row flex-col">
             <div className="w-full h-full ">
               {images[0] && (
                 <img
@@ -124,7 +124,7 @@ const ProductDetail = () => {
               )}
             </div>
           </div>
-          <div className="w-full h-[45%] flex">
+          <div className="w-full h-[45%] flex md:flex-row flex-col">
             <div className="w-full h-full ">
               {images[2] && (
                 <img
@@ -146,22 +146,24 @@ const ProductDetail = () => {
           </div>
         </div>
         <div className="w-[50%] h-full p-10">
-          <div className="flex text-3xl justify-between ">
+          <div className="flex text-xl md:text-3xl justify-between ">
             <h3>
               De Casual Slim {singleProduct[0]?.type} <span>{singleProduct[0]?.forWho}</span>{" "}
             </h3>
             <div className="text-4xl flex flex-col items-center gap-3">
-              <span className="text-sm">Add to Favorites</span>
+              <span className=" text-xs md:text-sm">Add to Favorites</span>
               <FaHeart onClick={()=>handleFavorite(singleProduct[0].id)}  className="text-red-700 cursor-pointer hover:scale-95 ease-in-out duration-100" />
             </div>
           </div>
-          <div className="pt-10">
-            <div className="flex items-center  text-2xl">
+          <div className="pt-10 ">
+            <div className="flex flex-col md:flex-row items-center text-xl  md:text-2xl">
+              <div className="flex">
               <IoIosStar className="text-yellow-400" />
               <IoIosStar className="text-yellow-400" />
               <IoIosStar className="text-yellow-400" />
               <IoIosStar className="text-yellow-400" />
               <IoIosStar className="text-yellow-400" />
+              </div>
               <div className="text-sm flex gap-3">
                 <span className="pl-3  text-gray-600"> | </span>
                 <div className="flex text-lg gap-1 cursor-pointer font-semibold hover:text-blue-600 ease-in-out duration-100">
@@ -170,17 +172,17 @@ const ProductDetail = () => {
                 </div>
               </div>
             </div>
-            <div className="pt-20 text-3xl text-[#193DB0]">
+            <div className="pt-20 text-2xl md:text-3xl text-[#193DB0]">
               <h2>{singleProduct[0]?.price}$</h2>
             </div>
             <div className="pt-10 text-xl font-semibold">
               <h2>Size</h2>
-              <div className="w-full h-auto pt-5 flex gap-3">
+              <div className="w-full h-auto pt-5 flex flex-col md:flex-row gap-3">
                 {["XS", "S", "M", "L", "XL", "2XL", "3XL"].map((size) => (
                   <button
                     key={size}
                     onClick={() => handleClick(size)}
-                    className={`w-12 h-12 font-normal shadow-xl text-black hover:border-2 border-black ease-out duration-75 ${
+                    className={`w-8 h-8 md:w-12 md:h-12 font-normal shadow-xl text-black hover:border-2 border-black ease-out duration-75 ${
                       selectedSize === size
                         ? "bg-blue-600 text-white"
                         : "bg-white"
@@ -200,7 +202,7 @@ const ProductDetail = () => {
                   Add To Shopping Cart
                 </button>
               ) : (
-                <button className="w-full h-14 bg-blue-600 text-white text-xl rounded-sm font-semibold  cursor-not-allowed ">
+                <button className="w-full h-14 bg-blue-600 text-white text-sm md:text-xl rounded-sm font-semibold  cursor-not-allowed ">
                   Add To Shopping Cart
                 </button>
               )}
@@ -217,10 +219,7 @@ const ProductDetail = () => {
               <h2 className="font-bold">Product Description</h2>
               <p>
                 It stands out with its elasticated waist and adjustable
-                drawstring design that provides a comfortable fit. It offers
-                excellent functionality with its large cargo pockets that
-                increase practical use. Elastic hem detail gives a modern and
-                sporty look.
+                drawstring design that provides a comfortable fit.
               </p>
             </div>
 
@@ -228,10 +227,7 @@ const ProductDetail = () => {
               <h2 className="font-bold">Product Content and Features</h2>
               <p>
                 It stands out with its elasticated waist and adjustable
-                drawstring design that provides a comfortable fit. It offers
-                excellent functionality with its large cargo pockets that
-                increase practical use. Elastic hem detail gives a modern and
-                sporty look.
+                drawstring design that provides a comfortable fit.
               </p>
             </div>
           </div>
