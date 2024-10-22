@@ -24,7 +24,7 @@ const Item = ({ item, key }) => {
       </div>
 
       <div className="p-4 text-[#555555] text-lg flex flex-col gap-2">
-        <h3 className="font-semibold">{item.type}</h3>
+        <h3 className="font-semibold">De Casual {item.type}</h3>
         <p className="text-sm text-gray-500">{item.description}</p>
       </div>
 
