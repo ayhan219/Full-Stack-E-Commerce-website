@@ -16,7 +16,6 @@ Once the database setup is complete and the connection details are configured, p
 
 ![image](https://github.com/user-attachments/assets/0c609a95-4c75-4fa7-a4bf-7bd14ebdf9bd)
 
-
 # Project detail
 
 This e-commerce website allows users to conveniently browse, search, and filter products based on their preferences. The platform offers a user-friendly interface where customers can explore a wide range of products, use various filtering options such as categories, price ranges, and brands, and quickly find what they are looking for.
