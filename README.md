@@ -51,13 +51,7 @@ The platform also incorporates authentication features, allowing users to create
 This e-commerce project covers all the necessary functionalities for an online shopping experience, with a strong focus on usability, security, and a responsive design that works across different devices.
 
 
-# Future
 
-Additionally, an admin panel is currently in development. This admin panel will provide administrators with the ability to manage the entire e-commerce platform effectively. Key features of the admin panel will include:
-
-Product Management: Admins will be able to add, edit, and delete products, ensuring that the inventory is always up to date. They can also manage product details such as descriptions, prices, and images.
-
-Order Management: Admins will have access to view all customer orders, track their statuses, and manage order fulfillment. This feature will help streamline the process of handling customer purchases and ensure timely deliveries.
 
 
 
