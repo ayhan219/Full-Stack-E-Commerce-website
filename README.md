@@ -11,7 +11,6 @@ https://dosya.co/2ajx8zgqog9r/Dump.sql.html
 
 First, you need to upload the MySQL files. After that, you can import them on the MySQL side and start using them.
 Next, after creating the database, enter the database password and name to connect the database to your project.
-
 <br>
 
 Once the database setup is complete and the connection details are configured, proceed to install the project dependencies. Open the terminal and run npm install or yarn install to automatically download and install all required packages. This step ensures that the project has all the necessary modules for a seamless development experience.
