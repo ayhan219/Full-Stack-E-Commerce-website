@@ -8,7 +8,6 @@
 
 https://dosya.co/2ajx8zgqog9r/Dump.sql.html
 
-
 First, you need to upload the MySQL files. After that, you can import them on the MySQL side and start using them.
 Next, after creating the database, enter the database password and name to connect the database to your project.
 <br>
