@@ -30,9 +30,7 @@ This e-commerce website allows users to conveniently browse, search, and filter 
 Once a user finds a desired product, they can add it to their shopping cart to proceed with the purchase or save it to their favorites for later. The favorites feature enables users to keep a list of products they are interested in, making it easy to revisit them without having to search again. Additionally, the shopping cart provides a seamless checkout experience, where users can review their selected items, adjust quantities, or remove products before finalizing the order.
 
 ![image](https://github.com/user-attachments/assets/4199e9c9-57f2-478e-a394-103998694547)
-
 <br>
-
 
 When its clicked
 
