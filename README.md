@@ -42,7 +42,6 @@ When a product is added to the shopping cart, the total price is automatically c
 ![image](https://github.com/user-attachments/assets/1240ef77-d261-42ca-ab8b-51159acaa3fd)
 
 <br>
-
 The platform also incorporates authentication features, allowing users to create accounts, log in securely, and manage their personal information. Registered users can access a personalized dashboard where they can view their order history, manage favorite products, and track ongoing orders. The site employs token-based authentication (JWT) and cookies to ensure that user sessions are managed securely.
 
 This e-commerce project covers all the necessary functionalities for an online shopping experience, with a strong focus on usability, security, and a responsive design that works across different devices.
