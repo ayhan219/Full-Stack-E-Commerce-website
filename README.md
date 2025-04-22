@@ -59,13 +59,7 @@ Product Management: Admins will be able to add, edit, and delete products, ensur
 
 Order Management: Admins will have access to view all customer orders, track their statuses, and manage order fulfillment. This feature will help streamline the process of handling customer purchases and ensure timely deliveries.
 
-User Management: The admin panel will allow for monitoring and managing user accounts. Admins can view user information, reset passwords, and handle user queries or issues.
 
-Analytics and Reporting: Admins will be able to access various reports and analytics, such as sales performance, popular products, and customer behavior. This data will assist in making informed business decisions.
-
-Content Management: The admin panel will include options for managing promotional banners, site content, and other marketing materials to enhance user engagement and drive sales.
-
-The development of this admin panel is aimed at providing a comprehensive management tool for administrators, ensuring that the e-commerce site runs smoothly and efficiently.
 
 
 
