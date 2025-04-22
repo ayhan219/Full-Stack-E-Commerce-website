@@ -37,7 +37,6 @@ When its clicked
 ![image](https://github.com/user-attachments/assets/47f1e980-2eab-4ecb-9fb5-b9b2e2c941de)
 
 <br>
-
 When a product is added to the shopping cart, the total price is automatically calculated, providing users with an up-to-date overview of their purchase costs. The cart dynamically updates as items are added or removed, ensuring that the displayed total always reflects the current contents. If users decide they no longer want certain products, they have the option to remove specific items from the cart, allowing for easy modifications to their order before proceeding to checkout.
 
 ![image](https://github.com/user-attachments/assets/1240ef77-d261-42ca-ab8b-51159acaa3fd)
